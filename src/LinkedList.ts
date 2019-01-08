@@ -7,7 +7,7 @@ export default class LinkedList {
    * @param {any[]} array An array
    * @returns {LinkedList}
    */
-  public static fromArray(array: any[]) {
+  public static fromArray(array: any[]): LinkedList {
     const list = new LinkedList();
     array.forEach((data) => list.append(data));
     return list;
@@ -15,7 +15,7 @@ export default class LinkedList {
 
   public head: LinkedListNode | null;
   public tail: LinkedListNode | null;
-  public size: number;
+  private size: number;
 
   constructor(...args: any) {
     this.head = null;
@@ -25,12 +25,16 @@ export default class LinkedList {
     for (const data of args) { this.append(data); }
   }
 
+  public get length(): number {
+    return this.size;
+  }
+
   /**
    * Append a node to the end of the list
    * @param {any} data Data to be stored in the node
    * @returns {LinkedList}
    */
-  public append(data: any) {
+  public append(data: any): LinkedList {
     const node = new LinkedListNode(data, this.tail, null, this);
     if (this.head === null) { this.head = node; }
     if (this.tail !== null) { this.tail.next = node; }
@@ -44,7 +48,7 @@ export default class LinkedList {
    * @param {any} data Data to be stored in the node
    * @returns {LinkedList}
    */
-  public prepend(data: any) {
+  public prepend(data: any): LinkedList {
     const node = new LinkedListNode(data, null, this.head, this);
     if (this.tail === null) { this.tail = node; }
     if (this.head !== null) { this.head.prev = node; }
@@ -61,7 +65,7 @@ export default class LinkedList {
    * @param {any} data Data to be stored on the new node
    * @returns {LinkedList}
    */
-  public insertAt(index: number, data: any) {
+  public insertAt(index: number, data: any): LinkedList {
     if (this.size === 0) { return this.append(data); }
     if (index <= 0) { return this.prepend(data); }
 
@@ -76,10 +80,40 @@ export default class LinkedList {
   }
 
   /**
+   * Insert a new node before the reference node
+   * @param {LinkedListNode} referenceNode The node reference
+   * @param {any} data Data to save in the node
+   * @returns {LinkedList}
+   */
+  public insertBefore(referenceNode: LinkedListNode, data: any): LinkedList {
+    const node = new LinkedListNode(data, referenceNode.prev, referenceNode, this);
+    if (referenceNode.prev === null) { this.head = node; }
+    if (referenceNode.prev !== null) { referenceNode.prev.next = node; }
+    referenceNode.prev = node;
+    this.size += 1;
+    return this;
+  }
+
+  /**
+   * Insert a new node after this one
+   * @param {LinkedListNode} referenceNode The reference node
+   * @param {any} data Data to be saved in the node
+   * @returns {LinkedList}
+   */
+  public insertAfter(referenceNode: LinkedListNode, data: any): LinkedList {
+    const node = new LinkedListNode(data, referenceNode, referenceNode.next, this);
+    if (referenceNode.next === null) { this.tail = node; }
+    if (referenceNode.next !== null) { referenceNode.next.prev = node; }
+    referenceNode.next = node;
+    this.size += 1;
+    return this;
+  }
+
+  /**
    * Remove the first node from the list
    * @returns {LinkedList}
    */
-  public shift() {
+  public shift(): LinkedList {
     if (this.size === 0) { return this; }
     if (this.head === this.tail) { this.tail = null; }
     if (this.head !== null) { this.head = this.head.next; }
@@ -92,7 +126,7 @@ export default class LinkedList {
    * Remove the last node from the list
    * @returns {LinkedList}
    */
-  public pop() {
+  public pop(): LinkedList {
     if (this.size === 0) { return this; }
     if (this.tail === this.head) { this.head = null; }
     if (this.tail !== null) { this.tail = this.tail.prev; }
@@ -104,10 +138,19 @@ export default class LinkedList {
   /**
    * Concatenate the current list with another
    * @param {LinkedList} list The list to be linked
+   * @returns {LinkedList}
    */
-  public concat(list: LinkedList) {
-    if (this.tail !== null) { this.tail.next = list.head; }
-    if (list.head !== null) { list.head.prev = this.tail; }
+  public concat(list: LinkedList): LinkedList {
+    if (list.head !== null) {
+      const link = new LinkedListNode(
+        list.head.data,
+        this.tail,
+        list.head.next,
+        this,
+      );
+      if (this.tail !== null) { this.tail.next = link; }
+    }
+
     this.head = this.head || list.head;
     this.tail = list.tail || this.tail;
     this.size += list.size;
@@ -119,7 +162,7 @@ export default class LinkedList {
    * @param {(any) => any} f A function to be applied to every node in the list
    * @returns {LinkedList} A new LinkedList
    */
-  public map(f: (data: any, index: number, list: LinkedList) => any) {
+  public map(f: (data: any, index: number, list: LinkedList) => any): LinkedList {
     const list = new LinkedList();
     let currentIndex = 0;
     for (const data of this) {
@@ -134,7 +177,7 @@ export default class LinkedList {
    * @param {(any) => any} f A filter function
    * @returns {LinkedList} A new linked list
    */
-  public filter(f: (data: any, index: number, list: LinkedList) => any) {
+  public filter(f: (data: any, index: number, list: LinkedList) => any): LinkedList {
     const list = new LinkedList();
     let currentIndex = 0;
     for (const data of this) {
@@ -158,32 +201,33 @@ export default class LinkedList {
       list: LinkedList,
     ) => any,
     start?: any,
-  ) {
+  ): any {
     if (this.head === null) { return start; }
     let currentIndex = 0;
+    let currentElement = start === undefined ? this.head.next : this.head;
     let result = start === undefined ? this.head.data : start;
-    for (const data of this) {
-      if (start === undefined && data.next !== null) {
-        result = f(result, data.next, currentIndex, this);
-      }
-      result = f(result, data, currentIndex, this);
+
+    while (currentElement) {
+      result = f(result, currentElement.data, currentIndex, this);
       currentIndex += 1;
+      currentElement = currentElement.next;
     }
+
     return result;
   }
 
   /**
    * Convert the linked list to an array
-   * @returns {Array}
+   * @returns {any[]}
    */
-  public toArray() {
+  public toArray(): any[] {
     return [...this];
   }
 
   /**
    * The iterator implementation
    */
-  public *[Symbol.iterator]() {
+  public *[Symbol.iterator](): any {
     let element = this.head;
 
     while (element !== null) {
