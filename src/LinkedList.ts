@@ -231,6 +231,33 @@ export default class LinkedList {
   }
 
   /**
+   * Slice the list and returns it. This does alter the current list.
+   * @param {number} start Start index
+   * @param {number} end End index, optional
+   * @returns {LinkedList}
+   */
+  public slice(start: number, end?: number): LinkedList {
+    if (this.head === null || this.tail === null) { return this; }
+
+    const head = this.getNode(start);
+    if (head !== undefined) {
+      this.head = head;
+      this.head.prev = null;
+    }
+    if (end !== undefined) {
+      const tail = this.getNode(end - start - 1);
+      if (tail !== undefined) {
+        this.tail = tail;
+        this.tail.next = null;
+      }
+      this.size = this.reduce((i) => i + 1, 0);
+    } else {
+      this.size = this.size - start;
+    }
+    return this;
+  }
+
+  /**
    * Map over every node in the list and apply a function to each node
    * @param {(any) => any} f A function to be applied to every node in the list
    * @returns {LinkedList} A new LinkedList
