@@ -14,7 +14,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -cw",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "devDependencies": {
     "@types/jest": "^23.3.11",
