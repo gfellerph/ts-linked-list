@@ -1,4 +1,3 @@
-import { executionAsyncId } from 'async_hooks';
 import LinkedList from '../src/LinkedList';
 
 describe('LinkedList.ts', () => {
