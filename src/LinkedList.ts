@@ -25,8 +25,37 @@ export default class LinkedList {
     for (const data of args) { this.append(data); }
   }
 
+  /**
+   * The length of the list
+   * @returns {number}
+   */
   public get length(): number {
     return this.size;
+  }
+
+  /**
+   * Get the node data at a specified index, zero based
+   * @param index to retrieve data at
+   * @returns {any} Data or undefined
+   */
+  public get(index: number): any {
+    const node = this.getNode(index);
+    return node !== undefined ? node.data : undefined;
+  }
+
+  /**
+   * Get the node at index, zero based
+   * @param index to retrieve the node at
+   * @returns {LinkedListNode|undefined} The node or undefined
+   */
+  public getNode(index: number): LinkedListNode | undefined {
+    if (this.head === null) { return undefined; }
+    let currentIndex = 0;
+    let currentNode: LinkedListNode | null = this.head;
+    for (; currentIndex < index && currentNode !== null; currentIndex += 1) {
+      currentNode = currentNode.next;
+    }
+    return currentNode !== null ? currentNode : undefined;
   }
 
   /**
@@ -41,6 +70,15 @@ export default class LinkedList {
     this.tail = node;
     this.size += 1;
     return this;
+  }
+
+  /**
+   * Synonym for append
+   * @param data Data to be stored
+   * @returns {LinkedList}
+   */
+  public push(data: any): LinkedList {
+    return this.append(data);
   }
 
   /**
@@ -77,6 +115,10 @@ export default class LinkedList {
     }
     if (currentNode !== null) { currentNode.insertAfter(data); }
     return this;
+  }
+
+  public removeAt(index: number) {
+
   }
 
   /**
