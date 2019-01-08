@@ -49,7 +49,7 @@ export default class LinkedList {
    * @returns {LinkedListNode|undefined} The node or undefined
    */
   public getNode(index: number): LinkedListNode | undefined {
-    if (this.head === null) { return undefined; }
+    if (this.head === null || index < 0) { return undefined; }
     let currentIndex = 0;
     let currentNode: LinkedListNode | null = this.head;
     for (; currentIndex < index && currentNode !== null; currentIndex += 1) {
@@ -117,8 +117,39 @@ export default class LinkedList {
     return this;
   }
 
-  public removeAt(index: number) {
+  /**
+   * Remove the specified node from the list
+   * @param node The node to be removed
+   * @returns {LinkedList} The list without the removed node
+   */
+  public removeNode(node: LinkedListNode): LinkedList {
+    if (node.list !== this) {
+      throw new ReferenceError('Node does not belong to this list');
+    }
+    if (node.prev !== null && node.next !== null) {
+      node.prev.next = node.next;
+      node.next.prev = node.prev;
+    }
+    if (node === this.head) {
+      this.head = node.next;
+      if (this.head !== null) { this.head.prev = null; }
+    }
+    if (node === this.tail) {
+      this.tail = node.prev;
+      if (this.tail !== null) { this.tail.next = null; }
+    }
+    this.size -= 1;
+    return this;
+  }
 
+  /**
+   * Remove the node at the specified index
+   * @param index Index at which to remove
+   * @returns {LinkedList} The list without the node
+   */
+  public removeAt(index: number): LinkedList {
+    const node = this.getNode(index);
+    return node !== undefined ? node.remove() : this;
   }
 
   /**

@@ -25,4 +25,12 @@ export default class LinkedListNode {
   public insertAfter(data: any): LinkedList {
     return this.list.insertAfter(this, data);
   }
+
+  /**
+   * Remove this node
+   * @returns {LinkedList} the list without this node
+   */
+  public remove(): LinkedList {
+    return this.list.removeNode(this);
+  }
 }
