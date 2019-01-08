@@ -26,6 +26,18 @@ export default class LinkedList {
   }
 
   /**
+   * The iterator implementation
+   */
+  public *[Symbol.iterator](): IterableIterator<any> {
+    let element = this.head;
+
+    while (element !== null) {
+      yield element.data;
+      element = element.next;
+    }
+  }
+
+  /**
    * The length of the list
    * @returns {number}
    */
@@ -322,17 +334,5 @@ export default class LinkedList {
    */
   public toArray(): any[] {
     return [...this];
-  }
-
-  /**
-   * The iterator implementation
-   */
-  public *[Symbol.iterator](): any {
-    let element = this.head;
-
-    while (element !== null) {
-      yield element.data;
-      element = element.next;
-    }
   }
 }
