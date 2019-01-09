@@ -190,19 +190,27 @@ export default class LinkedList {
     if (node.list !== this) {
       throw new ReferenceError('Node does not belong to this list');
     }
-    if (node.prev !== null && node.next !== null) {
+
+    if (node.prev !== null) {
       node.prev.next = node.next;
+    }
+
+    if (node.next !== null) {
       node.next.prev = node.prev;
     }
-    if (node === this.head) {
+
+    if (this.head === node) {
       this.head = node.next;
-      if (this.head !== null) { this.head.prev = null; }
     }
-    if (node === this.tail) {
+
+    if (this.tail === node) {
       this.tail = node.prev;
-      if (this.tail !== null) { this.tail.next = null; }
     }
+
     this.size -= 1;
+    node.next = null;
+    node.prev = null;
+    node.list = null;
     return this;
   }
 
