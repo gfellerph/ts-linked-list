@@ -168,16 +168,16 @@ export default class LinkedList {
    * @returns {LinkedList}
    */
   public insertAt(index: number, data: any): LinkedList {
-    if (this.size === 0) { return this.append(data); }
+    if (this.head === null) { return this.append(data); }
     if (index <= 0) { return this.prepend(data); }
 
     let currentNode = this.head;
     let currentIndex = 0;
-    while (currentIndex < index - 1 && currentNode !== null && currentNode.next !== null) {
+    while (currentIndex < index - 1 && currentNode.next !== null) {
       currentIndex += 1;
       currentNode = currentNode.next;
     }
-    if (currentNode !== null) { currentNode.insertAfter(data); }
+    currentNode.insertAfter(data);
     return this;
   }
 
@@ -251,9 +251,9 @@ export default class LinkedList {
    * @returns {LinkedList}
    */
   public shift(): LinkedList {
-    if (this.size === 0) { return this; }
+    if (this.head === null) { return this; }
     if (this.head === this.tail) { this.tail = null; }
-    if (this.head !== null) { this.head = this.head.next; }
+    this.head = this.head.next;
     if (this.head !== null) { this.head.prev = null; }
     this.size -= 1;
     return this;
@@ -264,9 +264,9 @@ export default class LinkedList {
    * @returns {LinkedList}
    */
   public pop(): LinkedList {
-    if (this.size === 0) { return this; }
+    if (this.tail === null) { return this; }
     if (this.tail === this.head) { this.head = null; }
-    if (this.tail !== null) { this.tail = this.tail.prev; }
+    this.tail = this.tail.prev;
     if (this.tail !== null) { this.tail.next = null; }
     this.size -= 1;
     return this;
@@ -311,8 +311,7 @@ export default class LinkedList {
     if (finish === undefined || finish < start) { finish = this.length; }
 
     let head: LinkedListNode | null | undefined = this.getNode(start);
-    for (let i = 0; i < finish - start && head !== null; i++) {
-      if (head === null || head === undefined) { return list; }
+    for (let i = 0; i < finish - start && head !== null && head !== undefined; i++) {
       list.append(head.data);
       head = head.next;
     }

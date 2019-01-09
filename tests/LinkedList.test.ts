@@ -19,16 +19,6 @@ describe('LinkedList.ts', () => {
     expect(l2).toBeInstanceOf(LinkedList);
   });
 
-  it('Prepends a node to a list of length 1', () => {
-    const l = new LinkedList();
-    l.append(2);
-    l.prepend(1);
-    expect(l.length).toBe(2);
-    expect(l.head).not.toBe(l.tail);
-    expect(l.head.data).toBe(1);
-    expect(l.tail.data).toBe(2);
-  });
-
   it('Initialises from an array', () => {
     const l = LinkedList.fromArray([1, 2, 3]);
     expect(l.length).toBe(3);
@@ -41,50 +31,6 @@ describe('LinkedList.ts', () => {
     expect(l.length).toBe(3);
     expect(l.head.data).toBe(1);
     expect(l.tail.data).toBe(3);
-  });
-
-  it('Inserts a node at position 1', () => {
-    const l = new LinkedList(1, 3);
-    l.insertAt(1, 2);
-    expect(l.length).toBe(3);
-    expect(l.head.next.data).toBe(2);
-  });
-
-  it('Inserts a node even if the index is off limits', () => {
-    const l = new LinkedList(1, 2);
-    l.insertAt(100, 3);
-    expect(l.length).toBe(3);
-    expect(l.tail.data).toBe(3);
-  });
-
-  it('Inserts a node even if the index is negative', () => {
-    const l = new LinkedList(2, 3);
-    l.insertAt(-100, 1);
-    expect(l.length).toBe(3);
-    expect(l.head.data).toBe(1);
-  });
-
-  it('Correctly shifts', () => {
-    const l = new LinkedList(1, 2, 3);
-    l.shift();
-    expect(l.length).toBe(2);
-    expect(l.head.data).toBe(2);
-  });
-
-  it('Shifts an empty list', () => {
-    const l = new LinkedList();
-    l.shift();
-    expect(l.length).toBe(0);
-    expect(l.head).toBe(null);
-    expect(l.tail).toBe(null);
-  });
-
-  it('Shifts the only remaining element', () => {
-    const l = new LinkedList(1);
-    l.shift();
-    expect(l.length).toBe(0);
-    expect(l.head).toBe(null);
-    expect(l.tail).toBe(null);
   });
 
   it('Correctly pops', () => {
@@ -185,26 +131,5 @@ describe('LinkedList.ts', () => {
     expect(l2).not.toBe(l1);
     expect(l2.length).toBe(3);
     expect(l1.length).toBe(6);
-  });
-
-  it('Reduces a list to its count', () => {
-    const l1 = new LinkedList(1, 2, 3);
-    const l2 = new LinkedList(1);
-    const count = l1.reduce((c) => c + 1, 0);
-    const count2 = l2.reduce((c) => c + 1, 0);
-    expect(count2).toBe(1);
-    expect(count).toBe(3);
-  });
-
-  it('Calls the reducer function with the correct arguments', () => {
-    const l = new LinkedList(1, 2);
-    const mock = jest.fn((acc, curr, index, list) => {
-      expect(acc).toBe(l.head.data);
-      expect(curr).toBe(l.tail.data);
-      expect(index).toBe(0);
-      expect(list).toBe(l);
-    });
-    l.reduce(mock);
-    expect(mock).toBeCalledTimes(1);
   });
 });

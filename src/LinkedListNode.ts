@@ -47,6 +47,6 @@ export default class LinkedListNode {
    * like string, integer, boolean, null or undefined
    */
   public clone(): LinkedListNode {
-    return new LinkedListNode(null, this.prev, this.next, this.list);
+    return new LinkedListNode(this.data, this.prev, this.next, this.list);
   }
 }

@@ -47,4 +47,10 @@ describe('LinkedList.removeNode', () => {
     expect(list.head.prev).toBe(null);
     expect(list.toArray()).toEqual([2]);
   });
+
+  it('Throws a ReferenceError when the list is wrong', () => {
+    const list = new LinkedList(1, 2);
+    const list2 = new LinkedList(3);
+    expect(() => list.removeNode(list2.head)).toThrow();
+  });
 });
