@@ -295,30 +295,28 @@ export default class LinkedList {
   }
 
   /**
-   * Slice the list and returns it. This does alter the current list.
+   * The slice() method returns a shallow copy of a
+   * portion of a list into a new list object selected
+   * from begin to end (end not included).
+   * The original array will not be modified.
    * @param {number} start Start index
    * @param {number} end End index, optional
    * @returns {LinkedList}
    */
   public slice(start: number, end?: number): LinkedList {
-    if (this.head === null || this.tail === null) { return this; }
+    const list = new LinkedList();
+    let finish = end;
 
-    const head = this.getNode(start);
-    if (head !== undefined) {
-      this.head = head;
-      this.head.prev = null;
+    if (this.head === null || this.tail === null) { return list; }
+    if (finish === undefined || finish < start) { finish = this.length; }
+
+    let head: LinkedListNode | null | undefined = this.getNode(start);
+    for (let i = 0; i < finish - start && head !== null; i++) {
+      if (head === null || head === undefined) { return list; }
+      list.append(head.data);
+      head = head.next;
     }
-    if (end !== undefined) {
-      const tail = this.getNode(end - start - 1);
-      if (tail !== undefined) {
-        this.tail = tail;
-        this.tail.next = null;
-      }
-      this.size = this.reduce((i) => i + 1, 0);
-    } else {
-      this.size = this.size - start;
-    }
-    return this;
+    return list;
   }
 
   /**
