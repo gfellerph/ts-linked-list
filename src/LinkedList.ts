@@ -258,26 +258,18 @@ export default class LinkedList {
    * Remove the first node from the list
    * @returns {LinkedList}
    */
-  public shift(): LinkedList {
-    if (this.head === null) { return this; }
-    if (this.head === this.tail) { this.tail = null; }
-    this.head = this.head.next;
-    if (this.head !== null) { this.head.prev = null; }
-    this.size -= 1;
-    return this;
+  public shift(): any | undefined {
+    if (this.head === null) { return undefined; }
+    return this.removeNode(this.head).data;
   }
 
   /**
    * Remove the last node from the list
    * @returns {LinkedList}
    */
-  public pop(): LinkedList {
-    if (this.tail === null) { return this; }
-    if (this.tail === this.head) { this.head = null; }
-    this.tail = this.tail.prev;
-    if (this.tail !== null) { this.tail.next = null; }
-    this.size -= 1;
-    return this;
+  public pop(): any | undefined {
+    if (this.tail === null) { return undefined; }
+    return this.removeNode(this.tail).data;
   }
 
   /**

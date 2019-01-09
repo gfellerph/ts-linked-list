@@ -1,26 +1,26 @@
 import LinkedList from '../src/LinkedList';
 
-describe('LinkedList.shift', () => {
-  it('Correctly shifts', () => {
+describe('LinkedList.pop', () => {
+  it('Correctly pops', () => {
     const l = new LinkedList(1, 2, 3);
-    const value = l.shift();
-    expect(value).toBe(1);
+    const value = l.pop();
+    expect(value).toBe(3);
     expect(l.length).toBe(2);
-    expect(l.head.data).toBe(2);
+    expect(l.tail.data).toBe(2);
   });
 
-  it('Shifts an empty list', () => {
+  it('Correctly pops an empty list', () => {
     const l = new LinkedList();
-    const value = l.shift();
+    const value = l.pop();
     expect(value).toBe(undefined);
     expect(l.length).toBe(0);
     expect(l.head).toBe(null);
     expect(l.tail).toBe(null);
   });
 
-  it('Shifts the only remaining element', () => {
+  it('Correctly pops the only element from the list', () => {
     const l = new LinkedList(1);
-    l.shift();
+    l.pop();
     expect(l.length).toBe(0);
     expect(l.head).toBe(null);
     expect(l.tail).toBe(null);
