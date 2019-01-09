@@ -1,15 +1,15 @@
 import LinkedList from '../src/LinkedList';
 import LinkedListNode from '../src/LinkedListNode';
 
-describe('LinkedListNode.insertBefore', () => {
+describe('LinkedListNode.insertAfter', () => {
   it('inserts a node before this one', () => {
-    const list = new LinkedList(2, 3);
-    list.head.insertBefore(1);
+    const list = new LinkedList(1, 2);
+    list.tail.insertAfter(3);
     expect(list.toArray()).toEqual([1, 2, 3]);
   });
 
-  it('throws if list is not set', () => {
+  it('throws when list is null', () => {
     const node = new LinkedListNode(1, null, null, null);
-    expect(() => node.insertBefore(0)).toThrow();
+    expect(() => node.insertAfter(2)).toThrow();
   });
 });
