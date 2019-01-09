@@ -8,6 +8,7 @@
     "noImplicitAny": true,
     "strict": true,
     "downlevelIteration": true,
+    "esModuleInterop": true,
     "lib": [
       "dom",
       "es5",

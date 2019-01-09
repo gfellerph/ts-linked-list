@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "esModuleInterop": true,
   },
   "include": [
     "src/**/*"
