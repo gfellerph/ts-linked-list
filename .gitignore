@@ -2,6 +2,7 @@
 node_modules
 /dist
 .rpt2_cache
+/coverage
 
 # local env files
 .env.local
