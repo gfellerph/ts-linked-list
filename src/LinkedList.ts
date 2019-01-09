@@ -1,6 +1,7 @@
 import LinkedListNode from './LinkedListNode';
 
 type TTestFunction = (data: any, index: number, list: LinkedList) => boolean;
+type TMapFunction = (data: any, index: number, list: LinkedList) => any;
 
 export default class LinkedList {
 
@@ -321,32 +322,38 @@ export default class LinkedList {
   }
 
   /**
-   * Map over every node in the list and apply a function to each node
-   * @param {(any) => any} f A function to be applied to every node in the list
-   * @returns {LinkedList} A new LinkedList
+   * The forEach() method executes a provided function once for each list node.
+   * @param {TMapFunction} f Function to execute for each element, taking three arguments.
    */
-  public map(f: (data: any, index: number, list: LinkedList) => any): LinkedList {
-    const list = new LinkedList();
+  public forEach(f: TMapFunction): void {
     let currentIndex = 0;
     for (const data of this) {
-      list.append(f(data, currentIndex, this));
+      f(data, currentIndex, this);
       currentIndex += 1;
     }
+  }
+
+  /**
+   * Map over every node in the list and apply a function to each node
+   * @param {TMapFunction} f A function to be applied to every node in the list
+   * @returns {LinkedList} A new LinkedList
+   */
+  public map(f: TMapFunction): LinkedList {
+    const list = new LinkedList();
+    this.forEach((data, index) => list.append(f(data, index, this)));
     return list;
   }
 
   /**
    * Filter the linked list
-   * @param {(any) => any} f A filter function
+   * @param {TTestFunction} f A filter function
    * @returns {LinkedList} A new linked list
    */
   public filter(f: TTestFunction): LinkedList {
     const list = new LinkedList();
-    let currentIndex = 0;
-    for (const data of this) {
-      if (f(data, currentIndex, this)) { list.append(data); }
-      currentIndex += 1;
-    }
+    this.forEach((data, index) => {
+      if (f(data, index, this)) { list.append(data); }
+    });
     return list;
   }
 
