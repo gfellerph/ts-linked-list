@@ -9,6 +9,13 @@ export default class LinkedListNode {
   ) {}
 
   /**
+   * Alias to .data
+   */
+  public get value() {
+    return this.data;
+  }
+
+  /**
    * Insert a new node before this one
    * @param {any} data Data to save in the node
    * @returns {LinkedList}
