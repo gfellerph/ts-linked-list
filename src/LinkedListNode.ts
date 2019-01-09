@@ -5,7 +5,7 @@ export default class LinkedListNode {
     public data: any,
     public prev: LinkedListNode | null,
     public next: LinkedListNode | null,
-    public list: LinkedList,
+    public list: LinkedList | null,
   ) {}
 
   /**
@@ -21,6 +21,9 @@ export default class LinkedListNode {
    * @returns {LinkedList}
    */
   public insertBefore(data: any): LinkedList {
+    if (this.list === null) {
+      throw new ReferenceError('Node does not belong to any list');
+    }
     return this.list.insertBefore(this, data);
   }
 
@@ -30,6 +33,9 @@ export default class LinkedListNode {
    * @returns {LinkedList}
    */
   public insertAfter(data: any): LinkedList {
+    if (this.list === null) {
+      throw new ReferenceError('Node does not belong to any list');
+    }
     return this.list.insertAfter(this, data);
   }
 
@@ -38,6 +44,9 @@ export default class LinkedListNode {
    * @returns {LinkedList} the list without this node
    */
   public remove(): LinkedList {
+    if (this.list === null) {
+      throw new ReferenceError('Node does not belong to any list');
+    }
     return this.list.removeNode(this);
   }
 
