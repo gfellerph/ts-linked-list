@@ -50,7 +50,7 @@ export default class LinkedList {
    * @param index to retrieve data at
    * @returns {any} Data or undefined
    */
-  public get(index: number): any {
+  public get(index: number): any | undefined {
     const node = this.getNode(index);
     return node !== undefined ? node.data : undefined;
   }
@@ -68,6 +68,38 @@ export default class LinkedList {
       currentNode = currentNode.next;
     }
     return currentNode !== null ? currentNode : undefined;
+  }
+
+  /**
+   * Returns the first node in the list that
+   * satisfies the provided testing function. Otherwise undefined is returned.
+   * @param f Function to test data against
+   */
+  public findNode(f: (
+    data: any,
+    index: number,
+    list: LinkedList,
+  ) => boolean): LinkedListNode | undefined {
+    let currentIndex = 0;
+    let currentNode = this.head;
+    while (currentNode) {
+      if (f(currentNode.data, currentIndex, this)) {
+        return currentNode;
+      }
+      currentNode = currentNode.next;
+      currentIndex += 1;
+    }
+    return undefined;
+  }
+
+  /**
+   * Returns the value of the first element in the list that
+   * satisfies the provided testing function. Otherwise undefined is returned.
+   * @param f Function to test data against
+   */
+  public find(f: (data: any, index: number, list: LinkedList) => boolean): any | undefined {
+    const node = this.findNode(f);
+    return node !== undefined ? node.data : undefined;
   }
 
   /**
