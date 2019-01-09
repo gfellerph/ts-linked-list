@@ -43,7 +43,7 @@ export default class LinkedListNode {
    * Remove this node
    * @returns {LinkedList} the list without this node
    */
-  public remove(): LinkedList {
+  public remove(): LinkedListNode {
     if (this.list === null) {
       throw new ReferenceError('Node does not belong to any list');
     }

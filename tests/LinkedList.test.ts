@@ -33,29 +33,6 @@ describe('LinkedList.ts', () => {
     expect(l.tail.data).toBe(3);
   });
 
-  it('Correctly pops', () => {
-    const l = new LinkedList(1, 2, 3);
-    l.pop();
-    expect(l.length).toBe(2);
-    expect(l.tail.data).toBe(2);
-  });
-
-  it('Correctly pops an empty list', () => {
-    const l = new LinkedList();
-    l.pop();
-    expect(l.length).toBe(0);
-    expect(l.head).toBe(null);
-    expect(l.tail).toBe(null);
-  });
-
-  it('Correctly pops the only element from the list', () => {
-    const l = new LinkedList(1);
-    l.pop();
-    expect(l.length).toBe(0);
-    expect(l.head).toBe(null);
-    expect(l.tail).toBe(null);
-  });
-
   it('Converts to an array', () => {
     const l = new LinkedList(1, 2, 3);
     const a = l.toArray();

@@ -184,9 +184,9 @@ export default class LinkedList {
   /**
    * Remove the specified node from the list
    * @param node The node to be removed
-   * @returns {LinkedList} The list without the removed node
+   * @returns {LinkedListNode} The removed node
    */
-  public removeNode(node: LinkedListNode): LinkedList {
+  public removeNode(node: LinkedListNode): LinkedListNode {
     if (node.list !== this) {
       throw new ReferenceError('Node does not belong to this list');
     }
@@ -211,17 +211,17 @@ export default class LinkedList {
     node.next = null;
     node.prev = null;
     node.list = null;
-    return this;
+    return node;
   }
 
   /**
    * Remove the node at the specified index
-   * @param index Index at which to remove
-   * @returns {LinkedList} The list without the node
+   * @param {number} index Index at which to remove
+   * @returns {LinkedListNode} The removed node or undefined
    */
-  public removeAt(index: number): LinkedList {
+  public removeAt(index: number): LinkedListNode | undefined {
     const node = this.getNode(index);
-    return node !== undefined ? node.remove() : this;
+    return node !== undefined ? this.removeNode(node) : undefined;
   }
 
   /**
