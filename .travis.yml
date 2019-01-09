@@ -4,5 +4,9 @@ node_js:
 cache: yarn
 before_install:
   - pip install --user codecov
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 after_success:
   - codecov --file coverage/lcov.info --disable search
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
