@@ -1,5 +1,7 @@
 import LinkedListNode from './LinkedListNode';
 
+type TTestFunction = (data: any, index: number, list: LinkedList) => boolean;
+
 export default class LinkedList {
 
   /**
@@ -70,21 +72,18 @@ export default class LinkedList {
     return currentNode !== null ? currentNode : undefined;
   }
 
-  /**
-   * Returns the first node in the list that
-   * satisfies the provided testing function. Otherwise undefined is returned.
-   * @param f Function to test data against
-   */
-  public findNode(f: (
-    data: any,
+  public findNodeIndex(f: TTestFunction): ({
+    node: LinkedListNode,
     index: number,
-    list: LinkedList,
-  ) => boolean): LinkedListNode | undefined {
+  }) | undefined {
     let currentIndex = 0;
     let currentNode = this.head;
     while (currentNode) {
       if (f(currentNode.data, currentIndex, this)) {
-        return currentNode;
+        return {
+          index: currentIndex,
+          node: currentNode,
+        };
       }
       currentNode = currentNode.next;
       currentIndex += 1;
@@ -93,13 +92,33 @@ export default class LinkedList {
   }
 
   /**
+   * Returns the first node in the list that
+   * satisfies the provided testing function. Otherwise undefined is returned.
+   * @param f Function to test data against
+   */
+  public findNode(f: TTestFunction): LinkedListNode | undefined {
+    const nodeIndex = this.findNodeIndex(f);
+    return nodeIndex !== undefined ? nodeIndex.node : undefined;
+  }
+
+  /**
    * Returns the value of the first element in the list that
    * satisfies the provided testing function. Otherwise undefined is returned.
    * @param f Function to test data against
    */
-  public find(f: (data: any, index: number, list: LinkedList) => boolean): any | undefined {
-    const node = this.findNode(f);
-    return node !== undefined ? node.data : undefined;
+  public find(f: TTestFunction): any | undefined {
+    const nodeIndex = this.findNodeIndex(f);
+    return nodeIndex !== undefined ? nodeIndex.node.data : undefined;
+  }
+
+  /**
+   * Returns the index of the first node in the list that
+   * satisfies the provided testing function. Ohterwise -1 is returned.
+   * @param f Function to test data against
+   */
+  public findIndex(f: TTestFunction): number {
+    const nodeIndex = this.findNodeIndex(f);
+    return nodeIndex !== undefined ? nodeIndex.index : -1;
   }
 
   /**
@@ -321,7 +340,7 @@ export default class LinkedList {
    * @param {(any) => any} f A filter function
    * @returns {LinkedList} A new linked list
    */
-  public filter(f: (data: any, index: number, list: LinkedList) => any): LinkedList {
+  public filter(f: TTestFunction): LinkedList {
     const list = new LinkedList();
     let currentIndex = 0;
     for (const data of this) {
