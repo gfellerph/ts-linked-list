@@ -5,11 +5,20 @@ env:
 node_js:
   - "node"
 cache: yarn
+deploy:
+  provider: pages
+  local-dir: doc
+  skip-cleanup: true
+  github-token: $GITHUB_API_KEY
+  keep-history: true
+  on:
+    branch: master
 before_install:
   - pip install --user codecov
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 after_success:
+  - yarn doc
   - codecov --file coverage/lcov.info --disable search
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
