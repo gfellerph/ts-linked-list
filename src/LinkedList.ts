@@ -3,12 +3,28 @@ import LinkedListNode from './LinkedListNode';
 type TTestFunction = (data: any, index: number, list: LinkedList) => boolean;
 type TMapFunction = (data: any, index: number, list: LinkedList) => any;
 
+/**
+ * A doubly linked list
+ * ```javascript
+ * const list = new LinkedList(1, 2);
+ * list.append(3);
+ * list.prepend(0);
+ * list.forEach(data => console.log(data));
+ * // 0 1 2 3
+ * list.head.remove();
+ * console.log(list.toArray());
+ * // [1, 2, 3]
+ * ```
+ */
 export default class LinkedList {
 
   /**
-   * Convert an array to a linked list
-   * @param {any[]} array An array
-   * @returns {LinkedList}
+   * Convert an array to a new linked list
+   * ```javascript
+   * import LinkedList from '@tuelsch/linked-list';
+   * const list = LinkedList.fromArray([1, 2, 3]);
+   * ```
+   * @param array An array
    */
   public static fromArray(array: any[]): LinkedList {
     const list = new LinkedList();
