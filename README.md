@@ -1,16 +1,16 @@
-# linked-list
+# ts-linked-list
 Yet another yet another doubly linked list, written in TypeScript.
 
 ## Installation
 Creating and publishing linked lists is quite popular, so the package name and all imaginable alternatives to it are already taken.
 
 ```shell
-npm install @tuelsch/linked-list
+npm install ts-linked-list
 ```
 
 ## Usage
 ```ts
-import LinkedList from '@tuelsch/linked-list';
+import LinkedList from 'ts-linked-list';
 
 // Create a list with however many arguments of whatever type you like
 const list = new LinkedList(1, 'two', { n: 3 }, () => 4);

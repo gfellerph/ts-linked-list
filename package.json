@@ -1,5 +1,5 @@
 {
-  "name": "linked-list",
+  "name": "ts-linked-list",
   "version": "0.0.1",
   "description": "A doubly linked list implementation",
   "main": "dist/index.js",
