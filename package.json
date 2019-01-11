@@ -15,7 +15,8 @@
     "build": "rollup -c",
     "dev": "rollup -cw",
     "test": "jest --coverage",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "doc": "typedoc --theme minimal --out ./doc ./src"
   },
   "devDependencies": {
     "@types/jest": "^23.3.11",
@@ -24,6 +25,7 @@
     "rollup-plugin-typescript2": "^0.18.1",
     "ts-jest": "^23.10.5",
     "tslint": "^5.12.0",
+    "typedoc": "^0.14.1",
     "typescript": "^3.2.2"
   }
 }
