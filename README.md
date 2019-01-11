@@ -2,10 +2,14 @@
 Yet another yet another doubly linked list, written in TypeScript.
 
 ## Installation
-Creating and publishing linked lists is quite popular, so the package name and all imaginable alternatives to it are already taken.
+Use `npm` or `yarn` or add the library as a script from the unpkg CDN.
 
 ```shell
 npm install ts-linked-list
+```
+or
+```html
+<script src="https://unpkg.com/ts-linked-list/dist/index.min.js"></script>
 ```
 
 ## Usage
@@ -23,7 +27,7 @@ list.forEach(data => doSomethingUseful(data));
 ```
 
 ## Documentation
-Detailed documentation is available at https://tuelsch.github.io/linked-list/.
+Detailed documentation is available at https://tuelsch.github.io/ts-linked-list/.
 
 This is automatically generated from jsDoc-like comments by TypeDoc, a documentation generator specifically written for TypeScript.
 
@@ -33,6 +37,7 @@ This library was created to explore automated tools related to code quality cont
 ### Dependencies
 ![Dependencies](https://david-dm.org/tuelsch/linked-list.svg)
 ![Dev Dependencies](https://david-dm.org/tuelsch/linked-list/dev-status.svg)
+[![Greenkeeper badge](https://badges.greenkeeper.io/tuelsch/ts-linked-list.svg)](https://greenkeeper.io/)
 
 This library does not have any dependencies, so the first badge is easy to keep green. The second will be more useful in the future to check wether the devtools need an update.
 
@@ -53,6 +58,6 @@ Testing the library is essential today, I used Travis CI to check if the tests r
 Two separate tools are keeping watch here. Setting up either was easy and their results are matching. I'm not sure what the other benefits/drawbacks are so I'm keeping both around until one or the other proves to be more useful.
 
 ### Maintainability
-[![Maintainability](https://api.codeclimate.com/v1/badges/cf8d37f4c9775f1af2cd/maintainability)](https://codeclimate.com/github/tuelsch/linked-list/maintainability) [![Greenkeeper badge](https://badges.greenkeeper.io/tuelsch/ts-linked-list.svg)](https://greenkeeper.io/)
+[![Maintainability](https://api.codeclimate.com/v1/badges/cf8d37f4c9775f1af2cd/maintainability)](https://codeclimate.com/github/tuelsch/linked-list/maintainability)
 
 Codeclimate helps proofread the source code and gives feedback on what a machine thinks is clean code. It's not quite like your buddy giving advice, but it's free and can help you improve your code towards a generally accepted way of coding.
