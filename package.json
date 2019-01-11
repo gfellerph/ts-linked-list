@@ -1,8 +1,9 @@
 {
   "name": "ts-linked-list",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A doubly linked list implementation",
   "main": "dist/index.js",
+  "min": "dist/index.min.js",
   "module": "dist/index.es.js",
   "files": [
     "dist"
@@ -23,6 +24,7 @@
     "jest": "^23.6.0",
     "rollup": "^1.0.0",
     "rollup-plugin-typescript2": "^0.18.1",
+    "rollup-plugin-uglify": "^6.0.1",
     "ts-jest": "^23.10.5",
     "tslint": "^5.12.0",
     "typedoc": "^0.14.1",

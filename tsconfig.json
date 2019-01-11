@@ -2,7 +2,7 @@
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "./dist",
-    "module": "es6",
+    "module": "es2015",
     "outDir": "./dist",
     "target": "es5",
     "noImplicitAny": true,
@@ -10,6 +10,7 @@
     "downlevelIteration": true,
     "esModuleInterop": true,
     "lib": [
+      "dom",
       "es5",
       "es2015.iterable",
     ]
