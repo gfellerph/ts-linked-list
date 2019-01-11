@@ -916,14 +916,42 @@ img { max-width: 100%; }
 		<div class="tsd-panel tsd-typography">
 			<h1 id="linked-list">linked-list</h1>
 			<p>Yet another yet another doubly linked list, written in TypeScript.</p>
-			<h2 id="badges-">Badges!</h2>
-			<p><a href="https://travis-ci.com/tuelsch/linked-list"><img src="https://travis-ci.com/tuelsch/linked-list.svg?branch=master" alt="Build Status"></a></p>
+			<h2 id="installation">Installation</h2>
+			<p>Creating and publishing linked lists is quite popular, so the package name and all imaginable alternatives to it are already taken.</p>
+			<pre><code class="language-shell">npm install @tuelsch/linked-list</code></pre>
+			<h2 id="usage">Usage</h2>
+			<pre><code class="language-ts"><span class="hljs-keyword">import</span> LinkedList <span class="hljs-keyword">from</span> <span class="hljs-string">'@tuelsch/linked-list'</span>;
+
+<span class="hljs-comment">// Create a list with however many arguments of whatever type you like</span>
+<span class="hljs-keyword">const</span> list = <span class="hljs-keyword">new</span> LinkedList(<span class="hljs-number">1</span>, <span class="hljs-string">'two'</span>, { n: <span class="hljs-number">3</span> }, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-number">4</span>);
+
+<span class="hljs-comment">// Create a list from an array alternatively</span>
+<span class="hljs-keyword">const</span> listFromArray = LinkedList.fromArray([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-string">'whatever'</span>]);
+
+<span class="hljs-comment">// Do something with it</span>
+list.forEach(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> doSomethingUseful(data));</code></pre>
+			<h2 id="documentation">Documentation</h2>
+			<p>Detailed documentation is available at <a href="https://tuelsch.github.io/linked-list/">https://tuelsch.github.io/linked-list/</a>.</p>
+			<p>This is automatically generated from jsDoc-like comments by TypeDoc, a documentation generator specifically written for TypeScript.</p>
+			<h2 id="code-quality">Code quality</h2>
+			<p>This library was created to explore automated tools related to code quality control, so here&#39;s what I&#39;ve come up with.</p>
+			<h3 id="dependencies">Dependencies</h3>
 			<p><img src="https://david-dm.org/tuelsch/linked-list.svg" alt="Dependencies">
 			<img src="https://david-dm.org/tuelsch/linked-list/dev-status.svg" alt="Dev Dependencies"></p>
-			<p><a href="https://codecov.io/gh/tuelsch/linked-list"><img src="https://codecov.io/gh/tuelsch/linked-list/branch/master/graph/badge.svg" alt="codecov"></a></p>
-			<p><a href="https://codeclimate.com/github/tuelsch/linked-list/maintainability"><img src="https://api.codeclimate.com/v1/badges/cf8d37f4c9775f1af2cd/maintainability" alt="Maintainability"></a></p>
-			<p><a href="https://codeclimate.com/github/tuelsch/linked-list/test_coverage"><img src="https://api.codeclimate.com/v1/badges/cf8d37f4c9775f1af2cd/test_coverage" alt="Test Coverage"></a></p>
+			<p>This library does not have any dependencies, so the first badge is easy to keep green. The second will be more useful in the future to check wether the devtools need an update.</p>
+			<h3 id="vulnerabilities">Vulnerabilities</h3>
 			<p><a href="https://snyk.io/test/github/tuelsch/linked-list?targetFile=package.json"><img src="https://snyk.io/test/github/tuelsch/linked-list/badge.svg?targetFile=package.json" alt="Known Vulnerabilities"></a></p>
+			<p>As this library does not have any dependencies, there will be no vulnerabilities. However, this may change in the future, so it&#39;s good someone keeps an eye on it.</p>
+			<h3 id="testing">Testing</h3>
+			<p><a href="https://travis-ci.com/tuelsch/linked-list"><img src="https://travis-ci.com/tuelsch/linked-list.svg?branch=master" alt="Build Status"></a></p>
+			<p>Testing the library is essential today, I used Travis CI to check if the tests run successfully.</p>
+			<h3 id="test-coverage">Test coverage</h3>
+			<p><a href="https://codecov.io/gh/tuelsch/linked-list"><img src="https://codecov.io/gh/tuelsch/linked-list/branch/master/graph/badge.svg" alt="codecov"></a>
+			<a href="https://codeclimate.com/github/tuelsch/linked-list/test_coverage"><img src="https://api.codeclimate.com/v1/badges/cf8d37f4c9775f1af2cd/test_coverage" alt="Test Coverage"></a></p>
+			<p>Two separate tools are keeping watch here. Setting up either was easy and their results are matching. I&#39;m not sure what the other benefits/drawbacks are so I&#39;m keeping both around until one or the other proves to be more useful.</p>
+			<h3 id="maintainability">Maintainability</h3>
+			<p><a href="https://codeclimate.com/github/tuelsch/linked-list/maintainability"><img src="https://api.codeclimate.com/v1/badges/cf8d37f4c9775f1af2cd/maintainability" alt="Maintainability"></a></p>
+			<p>Codeclimate helps proofread the source code and gives feedback on what a machine thinks is clean code. It&#39;s not quite like your buddy giving advice, but it&#39;s free and can help you improve your code towards a generally accepted way of coding.</p>
 		</div>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
