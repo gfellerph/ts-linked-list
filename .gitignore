@@ -3,6 +3,7 @@ node_modules
 /dist
 .rpt2_cache
 /coverage
+/doc
 
 # local env files
 .env.local
