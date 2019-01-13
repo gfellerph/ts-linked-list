@@ -286,7 +286,7 @@ export default class LinkedList {
 
   /**
    * Remove the first node from the list
-   * @returns The removed node
+   * @returns The data of the removed node or undefined if the list was empty
    */
   public shift(): any | undefined {
     if (this.head === null) { return undefined; }
@@ -295,7 +295,7 @@ export default class LinkedList {
 
   /**
    * Remove the last node from the list
-   * @returns The removed node
+   * @returns The data of the removed node or undefined if the list was empty
    */
   public pop(): any | undefined {
     if (this.tail === null) { return undefined; }
