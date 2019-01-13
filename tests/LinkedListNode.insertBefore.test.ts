@@ -10,6 +10,6 @@ describe('LinkedListNode.insertBefore', () => {
 
   it('throws if list is not set', () => {
     const node = new LinkedListNode(1, null, null, null);
-    expect(() => node.insertBefore(0)).toThrow();
+    expect(node.insertBefore(0)).toBeInstanceOf(LinkedList);
   });
 });

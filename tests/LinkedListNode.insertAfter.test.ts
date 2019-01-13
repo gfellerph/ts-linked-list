@@ -10,6 +10,6 @@ describe('LinkedListNode.insertAfter', () => {
 
   it('throws when list is null', () => {
     const node = new LinkedListNode(1, null, null, null);
-    expect(() => node.insertAfter(2)).toThrow();
+    expect(node.insertAfter(2)).toBeInstanceOf(LinkedList);
   });
 });
