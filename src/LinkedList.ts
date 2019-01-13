@@ -151,25 +151,28 @@ export default class LinkedList {
 
   /**
    * Append a node to the end of the list
-   * @param data Data to be stored in the node
+   * @param data Data to be stored in the node, takes any number of arguments
    * @returns The list which was appended to
    */
-  public append(data: any): LinkedList {
-    const node = new LinkedListNode(data, this.tail, null, this);
-    if (this.head === null) { this.head = node; }
-    if (this.tail !== null) { this.tail.next = node; }
-    this.tail = node;
-    this.size += 1;
+  public append(...args: any): LinkedList {
+    for (const data of args) {
+      const node = new LinkedListNode(data, this.tail, null, this);
+      if (this.head === null) { this.head = node; }
+      if (this.tail !== null) { this.tail.next = node; }
+      this.tail = node;
+      this.size += 1;
+    }
     return this;
   }
 
   /**
    * Synonym for append
-   * @param data Data to be stored
+   * @param data Data to be stored, takes any number of arguments
    * @returns The list which was appended to
    */
-  public push(data: any): LinkedList {
-    return this.append(data);
+  public push(...args: any): number {
+    this.append(...args);
+    return this.length;
   }
 
   /**
