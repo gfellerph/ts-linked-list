@@ -49,13 +49,4 @@ export default class LinkedListNode {
     }
     return this.list.removeNode(this);
   }
-
-  /**
-   * Clone this node
-   * NOTE: Data is not deeply cloned if it is not a simple data type
-   * like string, integer, boolean, null or undefined
-   */
-  public clone(): LinkedListNode {
-    return new LinkedListNode(this.data, this.prev, this.next, this.list);
-  }
 }
