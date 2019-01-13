@@ -333,8 +333,8 @@ export default class LinkedList {
   /**
    * The slice() method returns a shallow copy of a
    * portion of a list into a new list object selected
-   * from begin to end (end not included).
-   * The original array will not be modified.
+   * from start to end (end not included).
+   * The original list will not be modified.
    * @param start Start index
    * @param end End index, optional
    * @returns The newly sliced list
