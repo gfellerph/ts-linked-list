@@ -1,8 +1,12 @@
 {
   "name": "ts-linked-list",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A doubly linked list written in TypeScript",
-  "keywords": ["doubly linked list", "linked list", "typescript"],
+  "keywords": [
+    "doubly linked list",
+    "linked list",
+    "typescript"
+  ],
   "homepage": "https://tuelsch.github.io/ts-linked-list/",
   "repository": {
     "type": "git",
