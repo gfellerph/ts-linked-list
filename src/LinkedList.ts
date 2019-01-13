@@ -82,11 +82,13 @@ export default class LinkedList {
    * @returns The node or undefined
    */
   public getNode(index: number): LinkedListNode | undefined {
-    if (this.head === null || index < 0) { return undefined; }
-    let currentIndex = 0;
-    let currentNode: LinkedListNode | null = this.head;
-    for (; currentIndex < index && currentNode !== null; currentIndex += 1) {
-      currentNode = currentNode.next;
+    if (this.head === null || index < 0 || index >= this.length) { return undefined; }
+    const asc = index < this.length / 2;
+    const stopAt = asc ? index : this.length - index - 1;
+    const nextNode = asc ? 'next' : 'prev';
+    let currentNode = asc ? this.head : this.tail;
+    for (let currentIndex = 0; currentIndex < stopAt && currentNode !== null; currentIndex++) {
+      currentNode = currentNode[nextNode];
     }
     return currentNode !== null ? currentNode : undefined;
   }
