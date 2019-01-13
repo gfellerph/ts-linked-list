@@ -176,16 +176,24 @@ export default class LinkedList {
   }
 
   /**
-   * Prepend a node to the beginning of the list
-   * @param data Data to be stored in the node
+   * Prepend any number of data arguments to the list. The
+   * argument list is prepended in reverse order to make it more logical:
+   * ```javascript
+   * const list = new LinkedList(3, 4);
+   * list.prepend(0, 1, 2).toArray(); // => [0, 1, 2, 3, 4]
+   * ```
+   * @param data Data to be stored in the node, accepts any number of arguments
    * @returns The list which was prepended to
    */
-  public prepend(data: any): LinkedList {
-    const node = new LinkedListNode(data, null, this.head, this);
-    if (this.tail === null) { this.tail = node; }
-    if (this.head !== null) { this.head.prev = node; }
-    this.head = node;
-    this.size += 1;
+  public prepend(...args: any): LinkedList {
+    const reverseArgs = Array.from(args).reverse();
+    for (const data of reverseArgs) {
+      const node = new LinkedListNode(data, null, this.head, this);
+      if (this.tail === null) { this.tail = node; }
+      if (this.head !== null) { this.head.prev = node; }
+      this.head = node;
+      this.size += 1;
+    }
     return this;
   }
 

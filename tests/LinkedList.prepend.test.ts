@@ -15,4 +15,12 @@ describe('LinkedList.prepend', () => {
     list.prepend(1);
     expect(list.toArray()).toEqual([1]);
   });
+
+  it('Prepends any number of arguments', () => {
+    const list = new LinkedList(3, 4);
+    const value = list.prepend(0, 1, 2);
+    expect(list.length).toBe(5);
+    expect(list.toArray()).toEqual([0, 1, 2, 3, 4]);
+    expect(value).toBe(list);
+  });
 });
