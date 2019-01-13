@@ -17,26 +17,24 @@ export default class LinkedListNode {
 
   /**
    * Insert a new node before this one
-   * @param {any} data Data to save in the node
-   * @returns {LinkedList}
+   * @param data Data to save in the node
+   * @returns The list the data was inserted to
    */
   public insertBefore(data: any): LinkedList {
-    if (this.list === null) {
-      throw new ReferenceError('Node does not belong to any list');
-    }
-    return this.list.insertBefore(this, data);
+    return this.list !== null
+      ? this.list.insertBefore(this, data)
+      : new LinkedList(data, this.data);
   }
 
   /**
    * Insert a new node after this one
-   * @param {any} data Data to be saved in the node
-   * @returns {LinkedList}
+   * @param data Data to be saved in the node
+   * @returns The list the data was inserted to
    */
   public insertAfter(data: any): LinkedList {
-    if (this.list === null) {
-      throw new ReferenceError('Node does not belong to any list');
-    }
-    return this.list.insertAfter(this, data);
+    return this.list !== null
+      ?  this.list.insertAfter(this, data)
+      : new LinkedList(this.data, data);
   }
 
   /**
