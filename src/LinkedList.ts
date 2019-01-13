@@ -21,15 +21,12 @@ export default class LinkedList {
   /**
    * Convert an array to a new linked list
    * ```javascript
-   * import LinkedList from '@tuelsch/linked-list';
-   * const list = LinkedList.fromArray([1, 2, 3]);
+   * const list = LinkedList.from([1, 2, 3]);
    * ```
-   * @param array An array
+   * @param iterable Any iterable datatype like an Array or a Map
    */
-  public static fromArray(array: any[]): LinkedList {
-    const list = new LinkedList();
-    array.forEach((data) => list.append(data));
-    return list;
+  public static from(iterable: Iterable<any>): LinkedList {
+    return new LinkedList(...iterable);
   }
 
   public head: LinkedListNode | null;

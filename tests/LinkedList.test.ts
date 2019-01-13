@@ -19,13 +19,6 @@ describe('LinkedList.ts', () => {
     expect(l2).toBeInstanceOf(LinkedList);
   });
 
-  it('Initialises from an array', () => {
-    const l = LinkedList.fromArray([1, 2, 3]);
-    expect(l.length).toBe(3);
-    expect(l.head.data).toBe(1);
-    expect(l.tail.data).toBe(3);
-  });
-
   it('Initialises with any number of arguments', () => {
     const l = new LinkedList(1, 2, 3);
     expect(l.length).toBe(3);
