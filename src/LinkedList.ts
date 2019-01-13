@@ -87,10 +87,10 @@ export default class LinkedList {
     const stopAt = asc ? index : this.length - index - 1;
     const nextNode = asc ? 'next' : 'prev';
     let currentNode = asc ? this.head : this.tail;
-    for (let currentIndex = 0; currentIndex < stopAt && currentNode !== null; currentIndex++) {
-      currentNode = currentNode[nextNode];
+    for (let currentIndex = 0; currentIndex < stopAt; currentIndex++) {
+      currentNode = currentNode![nextNode];
     }
-    return currentNode !== null ? currentNode : undefined;
+    return currentNode!;
   }
 
   /**
