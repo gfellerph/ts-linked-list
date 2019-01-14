@@ -359,8 +359,27 @@ export default class LinkedList<NodeData = any> {
   }
 
   /**
+   * The reverse() function reverses the list in place and returns the list
+   * itself.
+   * @returns The reversed list
+   */
+  public reverse(): LinkedList<NodeData> {
+    let currentNode = this.head;
+    while (currentNode) {
+      const next = currentNode.next;
+      currentNode.next = currentNode.prev;
+      currentNode.prev = next;
+      currentNode = currentNode.prev;
+    }
+    const tail = this.tail;
+    this.tail = this.head;
+    this.head = tail;
+    return this;
+  }
+
+  /**
    * The forEach() method executes a provided function once for each list node.
-   * @param f Function to execute for each element, taking three arguments.
+   * @param f Function to execute for each element, taking up to three arguments.
    */
   public forEach(f: TMapFunction<NodeData>): void {
     let currentIndex = 0;
