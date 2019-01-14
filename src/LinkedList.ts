@@ -380,51 +380,45 @@ export default class LinkedList<NodeData = any> {
   /**
    * The forEach() method executes a provided function once for each list node.
    * @param f Function to execute for each element, taking up to three arguments.
+   * @param reverse Indicates if the list should be walked in reverse order, default is false
    */
-  public forEach(f: TMapFunction<NodeData>): void {
-    let currentIndex = 0;
-    for (const data of this) {
-      f(data, currentIndex, this);
-      currentIndex += 1;
-    }
-  }
-
-  /**
-   * The forEachReverse() method executes a provided function once for each list
-   * node in reverse order.
-   * @param f Function to execute for each element, taking up to three arguments.
-   */
-  public forEachReverse(f: TMapFunction<NodeData>): void {
-    let currentNode = this.tail;
-    let currentIndex = this.length - 1;
+  public forEach(f: TMapFunction<NodeData>, reverse = false): void {
+    let currentIndex = reverse ? this.length - 1 : 0;
+    let currentNode = reverse ? this.tail : this.head;
+    const modifier = reverse ? -1 : 1;
+    const nextNode = reverse ? 'prev' : 'next';
     while (currentNode) {
       f(currentNode.data, currentIndex, this);
-      currentNode = currentNode.prev;
-      currentIndex -= 1;
+      currentNode = currentNode[nextNode];
+      currentIndex += modifier;
     }
   }
 
   /**
-   * Map over every node in the list and apply a function to each node
-   * @param f A function to be applied to every node in the list
+   * The map() method creates a new list with the results of
+   * calling a provided function on every node in the calling list.
+   * @param f Function that produces an node of the new list, taking up to three arguments
+   * @param reverse Indicates if the list should be mapped in reverse order, default is false
    * @returns A new LinkedList
    */
-  public map(f: TMapFunction<NodeData>): LinkedList<NodeData | {}> {
+  public map(f: TMapFunction<NodeData>, reverse = false): LinkedList<NodeData | {}> {
     const list = new LinkedList();
-    this.forEach((data: NodeData, index: number) => list.append(f(data, index, this)));
+    this.forEach((data, index) => list.append(f(data, index, this)), reverse);
     return list;
   }
 
   /**
-   * Filter the linked list
-   * @param f A filter function
+   * The filter() method creates a new list with all nodes
+   * that pass the test implemented by the provided function.
+   * @param f Function to test each node data in the list. Return true to keep the node
+   * @param reverse Indicates if the list should be filtered in reverse order, default is false
    * @returns A new linked list
    */
-  public filter(f: TTestFunction<NodeData>): LinkedList<NodeData | {}> {
+  public filter(f: TTestFunction<NodeData>, reverse = false): LinkedList<NodeData | {}> {
     const list = new LinkedList();
     this.forEach((data, index) => {
       if (f(data, index, this)) { list.append(data); }
-    });
+    }, reverse);
     return list;
   }
 
@@ -442,16 +436,27 @@ export default class LinkedList<NodeData = any> {
       list: LinkedList<NodeData>,
     ) => any,
     start?: any,
+    reverse = false,
   ): any {
-    if (this.head === null) { return start; }
-    let currentIndex = 0;
-    let currentElement = start === undefined ? this.head.next : this.head;
-    let result = start === undefined ? this.head.data : start;
+    let currentIndex = reverse ? this.length - 1 : 0;
+    const modifier = reverse ? -1 : 1;
+    const nextNode = reverse ? 'prev' : 'next';
+    let currentElement  = reverse ? this.tail : this.head;
+    let result;
+
+    if (start !== undefined) {
+      result = start;
+    } else if (currentElement) {
+      result = currentElement.data;
+      currentElement = currentElement[nextNode];
+    } else {
+      throw new TypeError('Reduce of empty LinkedList with no initial value');
+    }
 
     while (currentElement) {
       result = f(result, currentElement.data, currentIndex, this);
-      currentIndex += 1;
-      currentElement = currentElement.next;
+      currentIndex += modifier;
+      currentElement = currentElement[nextNode];
     }
 
     return result;

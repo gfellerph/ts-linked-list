@@ -81,25 +81,4 @@ describe('LinkedList.ts', () => {
     expect(l1.tail).toBe(l2.tail);
     expect(l1.head).not.toBe(l2.head);
   });
-
-  it('Maps to a new list', () => {
-    const l1 = new LinkedList(1, 2, 3);
-    const l2 = l1.map((data) => data);
-    expect(l1).toEqual(l2);
-    expect(l1).not.toBe(l2);
-  });
-
-  it('Uses return values from the map function', () => {
-    const l1 = new LinkedList(1, 2, 3);
-    const l2 = l1.map((data) => data + 10);
-    expect(l2.toArray()).toEqual([11, 12, 13]);
-  });
-
-  it('Filters a list and returns a new linked list', () => {
-    const l1 = new LinkedList(1, 2, 3, 4, 5, 6);
-    const l2 = l1.filter((data) => data < 4);
-    expect(l2).not.toBe(l1);
-    expect(l2.length).toBe(3);
-    expect(l1.length).toBe(6);
-  });
 });

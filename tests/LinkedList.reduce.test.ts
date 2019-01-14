@@ -27,4 +27,15 @@ describe('LinkedList.reduce', () => {
     const value = list.reduce(jest.fn(), 'habakuk');
     expect(value).toBe('habakuk');
   });
+
+  it('Reduces in reverse order', () => {
+    const list = new LinkedList(1, 2, 3, 4, 5);
+    const reduced = list.reduce((l, data) => l.append(data), new LinkedList(), true);
+    expect(reduced.toArray()).toEqual([5, 4, 3, 2, 1]);
+  });
+
+  it('Throws when reducing an empty list without start value', () => {
+    const list = new LinkedList();
+    expect(() => list.reduce(() => false)).toThrow();
+  });
 });
