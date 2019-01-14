@@ -313,7 +313,7 @@ export default class LinkedList<NodeData = any> {
    * @returns The data of the removed node or undefined if the list was empty
    */
   public shift(): NodeData | undefined {
-    return this.head !== null ? this.removeNode(this.head).data : undefined;
+    return this.removeFromAnyEnd(this.head);
   }
 
   /**
@@ -321,7 +321,7 @@ export default class LinkedList<NodeData = any> {
    * @returns The data of the removed node or undefined if the list was empty
    */
   public pop(): NodeData | undefined {
-    return this.tail !== null ? this.removeNode(this.tail).data : undefined;
+    return this.removeFromAnyEnd(this.tail);
   }
 
   /**
@@ -441,5 +441,9 @@ export default class LinkedList<NodeData = any> {
    */
   public toArray(): NodeData[] {
     return [...this];
+  }
+  /** Private helper function to reduce duplication of pop() and shift() methods */
+  private removeFromAnyEnd(node: LinkedListNode<NodeData> | null) {
+    return node !== null ? this.removeNode(node).data : undefined;
   }
 }
