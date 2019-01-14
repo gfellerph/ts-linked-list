@@ -434,15 +434,15 @@ export default class LinkedList<NodeData = any> {
    * @param start An initial value
    * @returns The final state of the accumulator
    */
-  public reduce<T>(
+  public reduce(
     f: (
-      accumulator: T | NodeData,
+      accumulator: any,
       currentNode: NodeData,
       index: number,
       list: LinkedList<NodeData>,
-    ) => T,
-    start?: T,
-  ): NodeData | T | undefined {
+    ) => any,
+    start?: any,
+  ): any {
     if (this.head === null) { return start; }
     let currentIndex = 0;
     let currentElement = start === undefined ? this.head.next : this.head;
