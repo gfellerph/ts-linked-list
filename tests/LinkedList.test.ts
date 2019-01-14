@@ -64,7 +64,7 @@ describe('LinkedList.ts', () => {
 
   it('Concats a list with an empty list', () => {
     const l1 = new LinkedList(1);
-    const l2 = new LinkedList();
+    const l2 = new LinkedList<number>();
     l1.concat(l2);
     expect(l1.length).toBe(1);
     expect(l1.head).toBe(l1.tail);

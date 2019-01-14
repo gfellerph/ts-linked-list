@@ -1,11 +1,11 @@
 import LinkedList from './LinkedList';
 
-export default class LinkedListNode {
+export default class LinkedListNode<NodeData = any> {
   constructor(
-    public data: any,
-    public prev: LinkedListNode | null,
-    public next: LinkedListNode | null,
-    public list: LinkedList | null,
+    public data: NodeData,
+    public prev: LinkedListNode<NodeData> | null,
+    public next: LinkedListNode<NodeData> | null,
+    public list: LinkedList<NodeData> | null,
   ) {}
 
   /**
@@ -20,7 +20,7 @@ export default class LinkedListNode {
    * @param data Data to save in the node
    * @returns The list the data was inserted to
    */
-  public insertBefore(data: any): LinkedList {
+  public insertBefore(data: any): LinkedList<NodeData> {
     return this.list !== null
       ? this.list.insertBefore(this, data)
       : new LinkedList(data, this.data);
@@ -31,7 +31,7 @@ export default class LinkedListNode {
    * @param data Data to be saved in the node
    * @returns The list the data was inserted to
    */
-  public insertAfter(data: any): LinkedList {
+  public insertAfter(data: any): LinkedList<NodeData> {
     return this.list !== null
       ?  this.list.insertAfter(this, data)
       : new LinkedList(this.data, data);
@@ -41,7 +41,7 @@ export default class LinkedListNode {
    * Remove this node
    * @returns {LinkedList} the list without this node
    */
-  public remove(): LinkedListNode {
+  public remove(): LinkedListNode<NodeData> {
     if (this.list === null) {
       throw new ReferenceError('Node does not belong to any list');
     }
