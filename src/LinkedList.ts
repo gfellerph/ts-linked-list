@@ -64,6 +64,10 @@ export default class LinkedList<NodeData = any> {
 
   /**
    * Get the node data at a specified index, zero based
+   * ```ts
+   * const list = new LinkedList(1, 2, 3);
+   * list.get(2); // 3
+   * ```
    * @param index to retrieve data at
    * @returns Data or undefined
    */
@@ -468,6 +472,17 @@ export default class LinkedList<NodeData = any> {
    */
   public toArray(): NodeData[] {
     return [...this];
+  }
+
+  /**
+   * Convert a linked list to string
+   * ```ts
+   * new LinkedList('one', 'two', 'three').toString(' <=> ') === 'one <=> two <=> three';
+   * ```
+   * @param separator Optional string to be placed in between data nodes, default is one space
+   */
+  public toString(separator = ' '): string {
+    return this.reduce((s, data) => `${s}${separator}${data}`);
   }
 
   /**

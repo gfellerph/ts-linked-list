@@ -81,4 +81,12 @@ describe('LinkedList.ts', () => {
     expect(l1.tail).toBe(l2.tail);
     expect(l1.head).not.toBe(l2.head);
   });
+
+  it('Converts to string', () => {
+    const list = new LinkedList<any>(true, 2, 'three');
+    const defaultSeparator = list.toString();
+    const customSeparator = list.toString(' <=> ');
+    expect(defaultSeparator).toBe('true 2 three');
+    expect(customSeparator).toBe('true <=> 2 <=> three');
+  });
 });
