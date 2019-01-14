@@ -390,6 +390,21 @@ export default class LinkedList<NodeData = any> {
   }
 
   /**
+   * The forEachReverse() method executes a provided function once for each list
+   * node in reverse order.
+   * @param f Function to execute for each element, taking up to three arguments.
+   */
+  public forEachReverse(f: TMapFunction<NodeData>): void {
+    let currentNode = this.tail;
+    let currentIndex = this.length - 1;
+    while (currentNode) {
+      f(currentNode.data, currentIndex, this);
+      currentNode = currentNode.prev;
+      currentIndex -= 1;
+    }
+  }
+
+  /**
    * Map over every node in the list and apply a function to each node
    * @param f A function to be applied to every node in the list
    * @returns A new LinkedList
