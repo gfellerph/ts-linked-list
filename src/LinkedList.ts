@@ -27,6 +27,14 @@ type TMapFunction<NodeData> = (
 export default class LinkedList<NodeData = any> {
 
   /**
+   * The length of the list
+   * @returns The length of the list
+   */
+  public get length(): number {
+    return this.size;
+  }
+
+  /**
    * Convert an array to a new linked list
    * ```javascript
    * const list = LinkedList.from([1, 2, 3]);
@@ -52,26 +60,6 @@ export default class LinkedList<NodeData = any> {
     this.size = 0;
 
     for (const data of args) { this.append(data); }
-  }
-
-  /**
-   * The iterator implementation
-   */
-  public *[Symbol.iterator](): IterableIterator<NodeData> {
-    let element = this.head;
-
-    while (element !== null) {
-      yield element.data;
-      element = element.next;
-    }
-  }
-
-  /**
-   * The length of the list
-   * @returns The length of the list
-   */
-  public get length(): number {
-    return this.size;
   }
 
   /**
@@ -442,6 +430,19 @@ export default class LinkedList<NodeData = any> {
   public toArray(): NodeData[] {
     return [...this];
   }
+
+  /**
+   * The iterator implementation
+   */
+  public *[Symbol.iterator](): IterableIterator<NodeData> {
+    let element = this.head;
+
+    while (element !== null) {
+      yield element.data;
+      element = element.next;
+    }
+  }
+
   /** Private helper function to reduce duplication of pop() and shift() methods */
   private removeFromAnyEnd(node: LinkedListNode<NodeData> | null) {
     return node !== null ? this.removeNode(node).data : undefined;
