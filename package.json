@@ -1,6 +1,6 @@
 {
   "name": "ts-linked-list",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "A doubly linked list written in TypeScript",
   "keywords": [
     "doubly linked list",
