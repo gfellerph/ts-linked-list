@@ -1,15 +1,31 @@
 import LinkedList from './LinkedList';
 
+/**
+ * The class which represents one link or node in a linked list
+ * ```ts
+ * const node = new LinkedListNode(1, null, null, null);
+ * ```
+ */
 export default class LinkedListNode<NodeData = any> {
   constructor(
+    /** Data stored on the node */
     public data: NodeData,
+
+    /** The previous node in the list */
     public prev: LinkedListNode<NodeData> | null,
+
+    /** The next link in the list */
     public next: LinkedListNode<NodeData> | null,
+
+    /** The list this node belongs to */
     public list: LinkedList<NodeData> | null,
   ) {}
 
   /**
    * Alias to .data
+   * ```ts
+   * new LinkedList(1, 2, 3).head.value; // 1
+   * ```
    */
   public get value() {
     return this.data;
@@ -17,8 +33,10 @@ export default class LinkedListNode<NodeData = any> {
 
   /**
    * Insert a new node before this one
+   * ```ts
+   * new LinkedList(2, 3).head.insertBefore(1); // 1 <=> 2 <=> 3
+   * ```
    * @param data Data to save in the node
-   * @returns The list the data was inserted to
    */
   public insertBefore(data: any): LinkedList<NodeData> {
     return this.list !== null
@@ -28,8 +46,10 @@ export default class LinkedListNode<NodeData = any> {
 
   /**
    * Insert a new node after this one
+   * ```ts
+   * new LinkedList(1, 2).tail.insertAfter(3); // 1 <=> 2 <=> 3
+   * ```
    * @param data Data to be saved in the node
-   * @returns The list the data was inserted to
    */
   public insertAfter(data: any): LinkedList<NodeData> {
     return this.list !== null
@@ -39,7 +59,9 @@ export default class LinkedListNode<NodeData = any> {
 
   /**
    * Remove this node
-   * @returns {LinkedList} the list without this node
+   * ```ts
+   * new LinkedList(1, 2, 3, 4).tail.remove(); // 1 <=> 2 <=> 3
+   * ```
    */
   public remove(): LinkedListNode<NodeData> {
     if (this.list === null) {
