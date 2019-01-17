@@ -53,11 +53,11 @@ Testing the library is essential today, I used Travis CI to check if the tests r
 
 ### Test coverage
 [![codecov](https://codecov.io/gh/tuelsch/ts-linked-list/branch/master/graph/badge.svg)](https://codecov.io/gh/tuelsch/ts-linked-list)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/cf8d37f4c9775f1af2cd/test_coverage)](https://codeclimate.com/github/tuelsch/ts-linked-list/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/afe5847fc5c53d9112de/test_coverage)](https://codeclimate.com/github/tuelsch/ts-linked-list/test_coverage)
 
 Two separate tools are keeping watch here. Setting up either was easy and their results are matching. I'm not sure what the other benefits/drawbacks are so I'm keeping both around until one or the other proves to be more useful.
 
 ### Maintainability
-[![Maintainability](https://api.codeclimate.com/v1/badges/cf8d37f4c9775f1af2cd/maintainability)](https://codeclimate.com/github/tuelsch/ts-linked-list/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/afe5847fc5c53d9112de/maintainability)](https://codeclimate.com/github/tuelsch/ts-linked-list/maintainability)
 
 Codeclimate helps proofread the source code and gives feedback on what a machine thinks is clean code. It's not quite like your buddy giving advice, but it's free and can help you improve your code towards a generally accepted way of coding.
