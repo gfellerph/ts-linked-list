@@ -927,46 +927,144 @@ img { max-width: 100%; }
 	<div class="content-wrap">
 		<div class="tsd-panel tsd-typography">
 			<h1 id="ts-linked-list">ts-linked-list</h1>
-			<p>Yet another yet another doubly linked list, written in TypeScript.</p>
+			<p>Yet another yet another doubly linked list, written in TypeScript. It supports
+				iterators using a generator function with <code>Symbol.iterator</code>, fast index getter in O(n/2) time,
+				reversible <code>forEach</code>, <code>map</code>, <code>filter</code> and <code>reduce</code> methods, <code>insertBefore</code> and <code>insertAfter</code>
+			any node and generics for TypeScript users.</p>
 			<h2 id="installation">Installation</h2>
 			<p>Use <code>npm</code> or <code>yarn</code> or add the library as a script from the unpkg CDN.</p>
-			<pre><code class="language-shell">npm install ts-linked-list</code></pre>
+			<pre><code class="language-shell">npm install ts-linked-list
+yarn add ts-linked list</code></pre>
 			<p>or</p>
-			<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/ts-linked-list/dist/index.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+			<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/ts-linked-list/dist/index.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- or --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> **<span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span>** <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/ts-linked-list/dist/index.es.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 			<h2 id="usage">Usage</h2>
 			<pre><code class="language-ts"><span class="hljs-keyword">import</span> LinkedList <span class="hljs-keyword">from</span> <span class="hljs-string">'ts-linked-list'</span>;
 
 <span class="hljs-comment">// Create a list with however many arguments of whatever type you like</span>
 <span class="hljs-keyword">const</span> list = <span class="hljs-keyword">new</span> LinkedList(<span class="hljs-number">1</span>, <span class="hljs-string">'two'</span>, { n: <span class="hljs-number">3</span> }, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-number">4</span>);
 
-<span class="hljs-comment">// Create a list from an array alternatively</span>
-<span class="hljs-keyword">const</span> listFromArray = LinkedList.fromArray([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-string">'whatever'</span>]);
+<span class="hljs-comment">// TYPESCRIPT ONLY: ts-linked-list uses generics to type the list data</span>
+<span class="hljs-keyword">const</span> typedList = <span class="hljs-keyword">new</span> LinkedList&lt;<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+<span class="hljs-keyword">const</span> wildList = <span class="hljs-keyword">new</span> LinkedList&lt;<span class="hljs-built_in">any</span>&gt;<span class="hljs-function">(<span class="hljs-params">1, 'two', (<span class="hljs-params"></span>) =&gt; 3, [4]</span>);
 
-<span class="hljs-comment">// Do something with it</span>
-list.forEach(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> doSomethingUseful(data));</code></pre>
+// <span class="hljs-params">Create</span> <span class="hljs-params">a</span> <span class="hljs-params">list</span> <span class="hljs-params">from</span> <span class="hljs-params">any</span> <span class="hljs-params">iterable</span> <span class="hljs-params">alternatively</span>
+<span class="hljs-params">const</span> <span class="hljs-params">listFromArray</span> = <span class="hljs-params">LinkedList</span>.<span class="hljs-params">from</span>(<span class="hljs-params">[1, 2, 3, 'whatever']</span>);
+
+// <span class="hljs-params">Do</span> <span class="hljs-params">something</span> <span class="hljs-params">with</span> <span class="hljs-params">it</span>
+<span class="hljs-params">list</span>.<span class="hljs-params">forEach</span>(<span class="hljs-params">data =&gt; doSomethingUseful(<span class="hljs-params">data</span>)</span>);</span></code></pre>
 			<h2 id="documentation">Documentation</h2>
-			<p>Detailed documentation is available at <a href="https://tuelsch.github.io/ts-linked-list/">https://tuelsch.github.io/ts-linked-list/</a>.</p>
+			<p>Detailed documentation and code samples are available at <a href="https://tuelsch.github.io/ts-linked-list/">https://tuelsch.github.io/ts-linked-list/</a>.</p>
 			<p>This is automatically generated from jsDoc-like comments by TypeDoc, a documentation generator specifically written for TypeScript.</p>
+			<p>Quick overview of the methods:</p>
+			<table>
+				<thead>
+					<tr>
+						<th>LinkedList</th>
+					</tr>
+				</thead>
+				<tbody><tr>
+						<td>append</td>
+					</tr>
+					<tr>
+						<td>concat</td>
+					</tr>
+					<tr>
+						<td>filter</td>
+					</tr>
+					<tr>
+						<td>find</td>
+					</tr>
+					<tr>
+						<td>findIndex</td>
+					</tr>
+					<tr>
+						<td>findNode</td>
+					</tr>
+					<tr>
+						<td>findNodeIndex</td>
+					</tr>
+					<tr>
+						<td>forEach</td>
+					</tr>
+					<tr>
+						<td>get</td>
+					</tr>
+					<tr>
+						<td>getNode</td>
+					</tr>
+					<tr>
+						<td>insertAfter</td>
+					</tr>
+					<tr>
+						<td>insertAt</td>
+					</tr>
+					<tr>
+						<td>insertBefore</td>
+					</tr>
+					<tr>
+						<td>map</td>
+					</tr>
+					<tr>
+						<td>pop</td>
+					</tr>
+					<tr>
+						<td>prepend</td>
+					</tr>
+					<tr>
+						<td>push</td>
+					</tr>
+					<tr>
+						<td>reduce</td>
+					</tr>
+					<tr>
+						<td>removeAt</td>
+					</tr>
+					<tr>
+						<td>removeNode</td>
+					</tr>
+					<tr>
+						<td>reverse</td>
+					</tr>
+					<tr>
+						<td>shift</td>
+					</tr>
+					<tr>
+						<td>slice</td>
+					</tr>
+					<tr>
+						<td>toArray</td>
+					</tr>
+					<tr>
+						<td>toString</td>
+					</tr>
+					<tr>
+						<td>from</td>
+					</tr>
+			</tbody></table>
 			<h2 id="code-quality">Code quality</h2>
-			<p>This library was created to explore automated tools related to code quality control, so here&#39;s what I&#39;ve come up with.</p>
+			<p>This library was created to explore automated tools related to code quality control.</p>
 			<h3 id="dependencies">Dependencies</h3>
 			<p><img src="https://david-dm.org/tuelsch/ts-linked-list.svg" alt="Dependencies">
 				<img src="https://david-dm.org/tuelsch/ts-linked-list/dev-status.svg" alt="Dev Dependencies">
 			<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/tuelsch/ts-linked-list.svg" alt="Greenkeeper badge"></a></p>
-			<p>This library does not have any dependencies, so the first badge is easy to keep green. The second will be more useful in the future to check wether the devtools need an update.</p>
+			<p>This library does not have any dependencies, so the first badge is easy to keep green. The second will be more useful in the future to check wether the devtools need an update. Greenkeeper will
+				create a branch with updated dependencies and run the tests. If successful, the dependencies can
+			be updated with one click. Neat.</p>
 			<h3 id="vulnerabilities">Vulnerabilities</h3>
 			<p><a href="https://snyk.io/test/github/tuelsch/ts-linked-list?targetFile=package.json"><img src="https://snyk.io/test/github/tuelsch/ts-linked-list/badge.svg?targetFile=package.json" alt="Known Vulnerabilities"></a></p>
-			<p>As this library does not have any dependencies, there will be no vulnerabilities. However, this may change in the future, so it&#39;s good someone keeps an eye on it.</p>
+			<p>As this library does not have any dependencies, there will be no dependency vulnerabilities. However, this may change in the future, so it&#39;s good someone keeps an eye on it.</p>
 			<h3 id="testing">Testing</h3>
 			<p><a href="https://travis-ci.com/tuelsch/ts-linked-list"><img src="https://travis-ci.com/tuelsch/ts-linked-list.svg?branch=master" alt="Build Status"></a></p>
-			<p>Testing the library is essential today, I used Travis CI to check if the tests run successfully.</p>
+			<p>Testing the library is essential. Travis CI is used to run the tests on every new branch/pull request and updates on the master branch.</p>
 			<h3 id="test-coverage">Test coverage</h3>
 			<p><a href="https://codecov.io/gh/tuelsch/ts-linked-list"><img src="https://codecov.io/gh/tuelsch/ts-linked-list/branch/master/graph/badge.svg" alt="codecov"></a>
-			<a href="https://codeclimate.com/github/tuelsch/ts-linked-list/test_coverage"><img src="https://api.codeclimate.com/v1/badges/cf8d37f4c9775f1af2cd/test_coverage" alt="Test Coverage"></a></p>
-			<p>Two separate tools are keeping watch here. Setting up either was easy and their results are matching. I&#39;m not sure what the other benefits/drawbacks are so I&#39;m keeping both around until one or the other proves to be more useful.</p>
+			<a href="https://codeclimate.com/github/tuelsch/ts-linked-list/test_coverage"><img src="https://api.codeclimate.com/v1/badges/afe5847fc5c53d9112de/test_coverage" alt="Test Coverage"></a></p>
+			<p>Two separate tools are keeping watch here. Setting up either was easy and their results are matching. </p>
 			<h3 id="maintainability">Maintainability</h3>
-			<p><a href="https://codeclimate.com/github/tuelsch/ts-linked-list/maintainability"><img src="https://api.codeclimate.com/v1/badges/cf8d37f4c9775f1af2cd/maintainability" alt="Maintainability"></a></p>
-			<p>Codeclimate helps proofread the source code and gives feedback on what a machine thinks is clean code. It&#39;s not quite like your buddy giving advice, but it&#39;s free and can help you improve your code towards a generally accepted way of coding.</p>
+			<p><a href="https://codeclimate.com/github/tuelsch/ts-linked-list/maintainability"><img src="https://api.codeclimate.com/v1/badges/afe5847fc5c53d9112de/maintainability" alt="Maintainability"></a></p>
+			<p>Codeclimate helps proofread the source code and gives feedback on what a machine thinks is clean code. It&#39;s not quite like a buddy giving advice, but it&#39;s free for open-source projects and can help improve code towards a generally accepted standard of coding.</p>
 		</div>
 		<div style="position:relative;"><a name="typedoc-main-index" class="tsd-anchor"></a></div>
 		<section class="tsd-panel-group tsd-index-group">
@@ -998,9 +1096,14 @@ list.forEach(<span class="hljs-function"><span class="hljs-params">data</span> =
 				<div class="tsd-signature tsd-kind-icon">TMap<wbr>Function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/84c9a9a/src/LinkedList.ts#L8">LinkedList.ts:8</a></li>
+						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/64deee4/src/LinkedList.ts#L11">LinkedList.ts:11</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Type used for map and forEach methods, returning anything</p>
+					</div>
+				</div>
 				<div class="tsd-type-declaration">
 					<h4>Type declaration</h4>
 					<ul class="tsd-parameters">
@@ -1035,9 +1138,14 @@ list.forEach(<span class="hljs-function"><span class="hljs-params">data</span> =
 				<div class="tsd-signature tsd-kind-icon">TTest<wbr>Function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/84c9a9a/src/LinkedList.ts#L3">LinkedList.ts:3</a></li>
+						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/64deee4/src/LinkedList.ts#L4">LinkedList.ts:4</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Type used for filter and find methods, returning a boolean</p>
+					</div>
+				</div>
 				<div class="tsd-type-declaration">
 					<h4>Type declaration</h4>
 					<ul class="tsd-parameters">
