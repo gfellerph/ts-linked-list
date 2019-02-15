@@ -1,28 +1,22 @@
 import LinkedList from '../src/LinkedList';
+import checkIntegrity from './list-integrity';
 
 describe('LinkedList.shift', () => {
   it('Correctly shifts', () => {
     const l = new LinkedList(1, 2, 3);
     const value = l.shift();
     expect(value).toBe(1);
-    expect(l.length).toBe(2);
+    checkIntegrity(l);
     expect(l.head.data).toBe(2);
-  });
-
-  it('Shifts an empty list', () => {
-    const l = new LinkedList();
-    const value = l.shift();
-    expect(value).toBe(undefined);
-    expect(l.length).toBe(0);
-    expect(l.head).toBe(null);
-    expect(l.tail).toBe(null);
-  });
-
-  it('Shifts the only remaining element', () => {
-    const l = new LinkedList(1);
+    // shift 2
     l.shift();
-    expect(l.length).toBe(0);
-    expect(l.head).toBe(null);
-    expect(l.tail).toBe(null);
+    checkIntegrity(l);
+    // shift 1
+    l.shift();
+    checkIntegrity(l);
+    // shift empty
+    const empty = l.shift();
+    checkIntegrity(l);
+    expect(empty).toBe(undefined);
   });
 });

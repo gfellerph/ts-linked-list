@@ -1,13 +1,12 @@
 import LinkedList from '../src/LinkedList';
+import checkIntegrity from './list-integrity';
 
 describe('LinkedList.removeAt', () => {
   it('Removes at the correct index', () => {
     const list = new LinkedList(1, 2, 3);
     const value = list.removeAt(1);
     expect(value.data).toBe(2);
-    expect(list.length).toBe(2);
-    expect(list.head.next).toBe(list.tail);
-    expect(list.tail.prev).toBe(list.head);
+    checkIntegrity(list);
     expect(list.toArray()).toEqual([1, 3]);
   });
 
@@ -15,7 +14,7 @@ describe('LinkedList.removeAt', () => {
     const list = new LinkedList(1, 2, 3);
     const value = list.removeAt(4);
     expect(value).toBe(undefined);
-    expect(list.length).toBe(3);
+    checkIntegrity(list);
     expect(list.toArray()).toEqual([1, 2, 3]);
   });
 });
