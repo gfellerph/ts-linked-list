@@ -405,28 +405,31 @@ export default class LinkedList<NodeData = any> {
   }
 
   /**
-   * Concatenate the current list with another and return this list
+   * Merge the current list with another. Both lists will be
+   * equal after merging.
    * ```ts
    * const list = new LinkedList(1, 2);
    * const otherList = new LinkedList(3);
-   * list.concat(otherList); // 1 <=> 2 <=> 3
+   * list.merge(otherList);
+   * (list === otherList); // true
    * ```
-   * @param list The list to be linked
+   * @param list The list to be merged
    */
-  public concat(list: LinkedList<NodeData>): LinkedList<NodeData> {
-    if (list.head !== null) {
-      const link = new LinkedListNode(
-        list.head.data,
-        this.tail,
-        list.head.next,
-        this,
-      );
-      if (this.tail !== null) { this.tail.next = link; }
+  public merge(list: LinkedList<NodeData>): void {
+    if (this.tail !== null) {
+      this.tail.next = list.head;
     }
-
+    if (list.head !== null) {
+      list.head.prev = this.tail;
+    }
     this.head = this.head || list.head;
     this.tail = list.tail || this.tail;
     this.size += list.size;
+    list.size = this.size;
+    list.head = this.head;
+    list.tail = this.tail;
+  }
+
     return this;
   }
 
