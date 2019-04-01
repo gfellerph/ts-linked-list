@@ -16,7 +16,7 @@ type TMapFunction<NodeData> = (
 
 /**
  * A doubly linked list
- * ```javascript
+ * ```ts
  * const list = new LinkedList(1, 2, 3);
  * const listFromArray = LinkedList.from([1, 2, 3]);
  * ```
