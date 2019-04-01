@@ -32,6 +32,17 @@ export default class LinkedListNode<NodeData = any> {
   }
 
   /**
+   * Get the index of this node
+   * ```ts
+   * new LinkedList(1, 2, 3).head.index; // 0
+   * ```
+   */
+  public get index() {
+    if (!this.list) { return undefined; }
+    return this.list.findIndex((value) => value === this.value);
+  }
+
+  /**
    * Insert a new node before this one
    * ```ts
    * new LinkedList(2, 3).head.insertBefore(1); // 1 <=> 2 <=> 3
