@@ -430,6 +430,17 @@ export default class LinkedList<NodeData = any> {
     list.tail = this.tail;
   }
 
+  /**
+   * Removes all nodes from a list
+   *
+   * ```ts
+   * list.clear();
+   * ```
+   */
+  public clear() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
     return this;
   }
 
