@@ -307,10 +307,65 @@ export default class LinkedList<NodeData = any> {
   }
 
   /**
+   * Sorts the linked list using the provided compare function
+   * @param compare A function used to compare the data of two nodes. It should return
+   *                a boolean. True will insert a before b, false will insert b before a.
+   *                (a, b) => a < b or (1, 2) => 1 < 2 === true, 2 will be inserted after 1,
+   *                the sort order will be ascending.
+   */
+  public sort(compare: (a: NodeData, b: NodeData) => boolean): LinkedList<NodeData> {
+    if (this.head === null || this.tail === null) { return this; }
+    if (this.length < 2) { return this; }
+    let run = 0;
+
+    const quicksort = (
+      start: LinkedListNode<NodeData>,
+      end: LinkedListNode<NodeData>,
+    ) => {
+      run++;
+      const startIndex = start.index;
+      const endIndex = end.index;
+      const diff = endIndex! - startIndex!;
+      if (start === end) {
+        return;
+      }
+      const pivotData = end.data;
+      let current: LinkedListNode | null = start;
+      let split: LinkedListNode = start;
+      while (current && current !== end) {
+        const sort = compare(current.data, pivotData);
+        if (sort) {
+          if (current !== split) {
+            const temp = split.data;
+            split.data = current.data;
+            current.data = temp;
+          }
+          split = split.next!;
+        }
+        current = current.next;
+      }
+      end.data = split.data;
+      split.data = pivotData;
+
+      if (start.next === end.prev) { return; }
+
+      if (split.prev && split !== start) {
+        quicksort(start, split.prev);
+      }
+      if (split.next && split !== end) {
+        quicksort(split.next, end);
+      }
+    };
+
+    quicksort(this.head, this.tail);
+    return this;
+  }
+
+  /**
    * Insert a new node after this one
    * ```ts
    * const list = new LinkedList(2, 3);
-   * list.insertBefore(list.head, 1); // 1 <=> 2 <=> 3
+   * list.insertAfter(list.head, 1); // 1 <=> 2 <=> 3
    * ```
    * @param referenceNode The reference node
    * @param data Data to be saved in the node
