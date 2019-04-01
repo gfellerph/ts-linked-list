@@ -934,7 +934,7 @@ img { max-width: 100%; }
 					<a href="linkedlist.html#append" class="tsd-kind-icon">append</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
-					<a href="linkedlist.html#concat" class="tsd-kind-icon">concat</a>
+					<a href="linkedlist.html#clear" class="tsd-kind-icon">clear</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="linkedlist.html#filter" class="tsd-kind-icon">filter</a>
@@ -973,6 +973,9 @@ img { max-width: 100%; }
 					<a href="linkedlist.html#map" class="tsd-kind-icon">map</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="linkedlist.html#merge" class="tsd-kind-icon">merge</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="linkedlist.html#pop" class="tsd-kind-icon">pop</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -1003,6 +1006,9 @@ img { max-width: 100%; }
 					<a href="linkedlist.html#slice" class="tsd-kind-icon">slice</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="linkedlist.html#sort" class="tsd-kind-icon">sort</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="linkedlist.html#toarray" class="tsd-kind-icon">to<wbr>Array</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -1030,7 +1036,7 @@ img { max-width: 100%; }
 			<div class="tsd-comment tsd-typography">
 				<div class="lead">
 					<p>A doubly linked list</p>
-					<pre><code class="language-javascript"><span class="hljs-keyword">const</span> list = <span class="hljs-keyword">new</span> LinkedList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+					<pre><code class="language-ts"><span class="hljs-keyword">const</span> list = <span class="hljs-keyword">new</span> LinkedList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
 <span class="hljs-keyword">const</span> listFromArray = LinkedList.from([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]);</code></pre>
 				</div>
 			</div>
@@ -1080,7 +1086,7 @@ img { max-width: 100%; }
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#___iterator" class="tsd-kind-icon">__@iterator</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#append" class="tsd-kind-icon">append</a></li>
-							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#concat" class="tsd-kind-icon">concat</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#clear" class="tsd-kind-icon">clear</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#filter" class="tsd-kind-icon">filter</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#find" class="tsd-kind-icon">find</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#findindex" class="tsd-kind-icon">find<wbr>Index</a></li>
@@ -1093,6 +1099,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#insertat" class="tsd-kind-icon">insert<wbr>At</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#insertbefore" class="tsd-kind-icon">insert<wbr>Before</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#map" class="tsd-kind-icon">map</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#merge" class="tsd-kind-icon">merge</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#pop" class="tsd-kind-icon">pop</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#prepend" class="tsd-kind-icon">prepend</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#push" class="tsd-kind-icon">push</a></li>
@@ -1103,6 +1110,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#reverse" class="tsd-kind-icon">reverse</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#shift" class="tsd-kind-icon">shift</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#slice" class="tsd-kind-icon">slice</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#sort" class="tsd-kind-icon">sort</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#toarray" class="tsd-kind-icon">to<wbr>Array</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="linkedlist.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="linkedlist.html#from" class="tsd-kind-icon">from</a></li>
@@ -1123,7 +1131,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L52">LinkedList.ts:52</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L52">LinkedList.ts:52</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1145,7 +1153,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">head<span class="tsd-signature-symbol">:</span> <a href="linkedlistnode.html" class="tsd-signature-type">LinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L46">LinkedList.ts:46</a></li>
+						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L46">LinkedList.ts:46</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1160,7 +1168,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L52">LinkedList.ts:52</a></li>
+						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L52">LinkedList.ts:52</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1175,7 +1183,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">tail<span class="tsd-signature-symbol">:</span> <a href="linkedlistnode.html" class="tsd-signature-type">LinkedListNode</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L49">LinkedList.ts:49</a></li>
+						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L49">LinkedList.ts:49</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1193,7 +1201,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">length<span class="tsd-signature-symbol">:</span> </div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L29">LinkedList.ts:29</a></li>
+						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L29">LinkedList.ts:29</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -1215,7 +1223,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L547">LinkedList.ts:547</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L618">LinkedList.ts:618</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1239,7 +1247,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L170">LinkedList.ts:170</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L172">LinkedList.ts:172</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1261,36 +1269,25 @@ img { max-width: 100%; }
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-				<a name="concat" class="tsd-anchor"></a>
-				<h3>concat</h3>
+				<a name="clear" class="tsd-anchor"></a>
+				<h3>clear</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">concat<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">clear<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L359">LinkedList.ts:359</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L440">LinkedList.ts:440</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Concatenate the current list with another and return this list</p>
-								<pre><code class="language-ts"><span class="hljs-keyword">const</span> list = <span class="hljs-keyword">new</span> LinkedList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
-<span class="hljs-keyword">const</span> otherList = <span class="hljs-keyword">new</span> LinkedList(<span class="hljs-number">3</span>);
-list.concat(otherList); <span class="hljs-comment">// 1 &lt;=&gt; 2 &lt;=&gt; 3</span></code></pre>
+								<p>Removes all nodes from a list</p>
 							</div>
+							<pre><code class="language-ts">list.clear();</code></pre>
 						</div>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>list: <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<p>The list to be linked</p>
-								</div>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -1304,7 +1301,7 @@ list.concat(otherList); <span class="hljs-comment">// 1 &lt;=&gt; 2 &lt;=&gt; 3<
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L468">LinkedList.ts:468</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L539">LinkedList.ts:539</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1343,7 +1340,7 @@ list.concat(otherList); <span class="hljs-comment">// 1 &lt;=&gt; 2 &lt;=&gt; 3<
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L143">LinkedList.ts:143</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L145">LinkedList.ts:145</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1379,7 +1376,7 @@ list.concat(otherList); <span class="hljs-comment">// 1 &lt;=&gt; 2 &lt;=&gt; 3<
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L156">LinkedList.ts:156</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L158">LinkedList.ts:158</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1412,7 +1409,7 @@ list.concat(otherList); <span class="hljs-comment">// 1 &lt;=&gt; 2 &lt;=&gt; 3<
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L130">LinkedList.ts:130</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L132">LinkedList.ts:132</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1449,7 +1446,7 @@ list.concat(otherList); <span class="hljs-comment">// 1 &lt;=&gt; 2 &lt;=&gt; 3<
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L102">LinkedList.ts:102</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L104">LinkedList.ts:104</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1486,7 +1483,7 @@ list.concat(otherList); <span class="hljs-comment">// 1 &lt;=&gt; 2 &lt;=&gt; 3<
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L432">LinkedList.ts:432</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L503">LinkedList.ts:503</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1524,7 +1521,7 @@ list.concat(otherList); <span class="hljs-comment">// 1 &lt;=&gt; 2 &lt;=&gt; 3<
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L69">LinkedList.ts:69</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L71">LinkedList.ts:71</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1559,7 +1556,7 @@ list.concat(otherList); <span class="hljs-comment">// 1 &lt;=&gt; 2 &lt;=&gt; 3<
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L81">LinkedList.ts:81</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L83">LinkedList.ts:83</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1592,14 +1589,14 @@ list.concat(otherList); <span class="hljs-comment">// 1 &lt;=&gt; 2 &lt;=&gt; 3<
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L316">LinkedList.ts:316</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L373">LinkedList.ts:373</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
 								<p>Insert a new node after this one</p>
 								<pre><code class="language-ts"><span class="hljs-keyword">const</span> list = <span class="hljs-keyword">new</span> LinkedList(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
-list.insertBefore(list.head, <span class="hljs-number">1</span>); <span class="hljs-comment">// 1 &lt;=&gt; 2 &lt;=&gt; 3</span></code></pre>
+list.insertAfter(list.head, <span class="hljs-number">1</span>); <span class="hljs-comment">// 1 &lt;=&gt; 2 &lt;=&gt; 3</span></code></pre>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1631,7 +1628,7 @@ list.insertBefore(list.head, <span class="hljs-number">1</span>); <span class="h
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L223">LinkedList.ts:223</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L225">LinkedList.ts:225</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1671,7 +1668,7 @@ list.insertBefore(list.head, <span class="hljs-number">1</span>); <span class="h
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L295">LinkedList.ts:295</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L297">LinkedList.ts:297</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1710,7 +1707,7 @@ list.insertBefore(list.tail, <span class="hljs-number">2</span>); <span class="h
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L453">LinkedList.ts:453</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L524">LinkedList.ts:524</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1740,6 +1737,42 @@ list.insertBefore(list.tail, <span class="hljs-number">2</span>); <span class="h
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="merge" class="tsd-anchor"></a>
+				<h3>merge</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">merge<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L418">LinkedList.ts:418</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Merge the current list with another. Both lists will be
+								equal after merging.</p>
+								<pre><code class="language-ts"><span class="hljs-keyword">const</span> list = <span class="hljs-keyword">new</span> LinkedList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+<span class="hljs-keyword">const</span> otherList = <span class="hljs-keyword">new</span> LinkedList(<span class="hljs-number">3</span>);
+list.merge(otherList);
+(list === otherList); <span class="hljs-comment">// true</span></code></pre>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>list: <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>The list to be merged</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 				<a name="pop" class="tsd-anchor"></a>
 				<h3>pop</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -1749,7 +1782,7 @@ list.insertBefore(list.tail, <span class="hljs-number">2</span>); <span class="h
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L346">LinkedList.ts:346</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L403">LinkedList.ts:403</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1776,7 +1809,7 @@ list.insertBefore(list.tail, <span class="hljs-number">2</span>); <span class="h
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L201">LinkedList.ts:201</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L203">LinkedList.ts:203</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1806,7 +1839,7 @@ list.insertBefore(list.tail, <span class="hljs-number">2</span>); <span class="h
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L188">LinkedList.ts:188</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L190">LinkedList.ts:190</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1835,7 +1868,7 @@ list.insertBefore(list.tail, <span class="hljs-number">2</span>); <span class="h
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L485">LinkedList.ts:485</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L556">LinkedList.ts:556</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1904,7 +1937,7 @@ list.insertBefore(list.tail, <span class="hljs-number">2</span>); <span class="h
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L281">LinkedList.ts:281</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L283">LinkedList.ts:283</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1939,7 +1972,7 @@ list.insertBefore(list.tail, <span class="hljs-number">2</span>); <span class="h
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L557">LinkedList.ts:557</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L628">LinkedList.ts:628</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1970,7 +2003,7 @@ list.insertBefore(list.tail, <span class="hljs-number">2</span>); <span class="h
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L246">LinkedList.ts:246</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L248">LinkedList.ts:248</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2004,7 +2037,7 @@ list.removeNode(list.tail); <span class="hljs-comment">// { prev: null, data: 3,
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L410">LinkedList.ts:410</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L481">LinkedList.ts:481</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2028,7 +2061,7 @@ list.removeNode(list.tail); <span class="hljs-comment">// { prev: null, data: 3,
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L335">LinkedList.ts:335</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L392">LinkedList.ts:392</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2055,7 +2088,7 @@ list.removeNode(list.tail); <span class="hljs-comment">// { prev: null, data: 3,
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L388">LinkedList.ts:388</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L459">LinkedList.ts:459</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2088,6 +2121,61 @@ list.removeNode(list.tail); <span class="hljs-comment">// { prev: null, data: 3,
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="sort" class="tsd-anchor"></a>
+				<h3>sort</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">sort<span class="tsd-signature-symbol">(</span>compare<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L316">LinkedList.ts:316</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Sorts the linked list using the provided compare function</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>compare: <span class="tsd-signature-type">function</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>A function used to compare the data of two nodes. It should return
+										a boolean. True will insert a before b, false will insert b before a.
+										(a, b) =&gt; a &lt; b or (1, 2) =&gt; 1 &lt; 2 === true, 2 will be inserted after 1,
+									the sort order will be ascending.</p>
+								</div>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-siganture">
+										<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NodeData</span>, b<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-parameters-title">Parameters</h4>
+												<ul class="tsd-parameters">
+													<li>
+														<h5>a: <span class="tsd-signature-type">NodeData</span></h5>
+													</li>
+													<li>
+														<h5>b: <span class="tsd-signature-type">NodeData</span></h5>
+													</li>
+												</ul>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 				<a name="toarray" class="tsd-anchor"></a>
 				<h3>to<wbr>Array</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -2097,7 +2185,7 @@ list.removeNode(list.tail); <span class="hljs-comment">// { prev: null, data: 3,
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L525">LinkedList.ts:525</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L596">LinkedList.ts:596</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2120,7 +2208,7 @@ list.removeNode(list.tail); <span class="hljs-comment">// { prev: null, data: 3,
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L536">LinkedList.ts:536</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L607">LinkedList.ts:607</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2152,7 +2240,7 @@ list.removeNode(list.tail); <span class="hljs-comment">// { prev: null, data: 3,
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/51607d1/src/LinkedList.ts#L41">LinkedList.ts:41</a></li>
+								<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/2657a83/src/LinkedList.ts#L41">LinkedList.ts:41</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
