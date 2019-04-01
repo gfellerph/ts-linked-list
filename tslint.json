@@ -3,6 +3,7 @@
     "tslint:recommended"
   ],
   "rules": {
-    "quotemark": [true, "single", "avoid-escape"]
+    "quotemark": [true, "single", "avoid-escape"],
+    "prefer-for-of": false
   }
 }

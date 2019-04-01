@@ -56,7 +56,9 @@ export default class LinkedList<NodeData = any> {
     this.tail = null;
     this.size = 0;
 
-    for (const data of args) { this.append(data); }
+    for (let i = 0; i < arguments.length; i++) {
+      this.append(arguments[i]);
+    }
   }
 
   /**
