@@ -316,16 +316,11 @@ export default class LinkedList<NodeData = any> {
   public sort(compare: (a: NodeData, b: NodeData) => boolean): LinkedList<NodeData> {
     if (this.head === null || this.tail === null) { return this; }
     if (this.length < 2) { return this; }
-    let run = 0;
 
     const quicksort = (
       start: LinkedListNode<NodeData>,
       end: LinkedListNode<NodeData>,
     ) => {
-      run++;
-      const startIndex = start.index;
-      const endIndex = end.index;
-      const diff = endIndex! - startIndex!;
       if (start === end) {
         return;
       }
