@@ -16,7 +16,7 @@ type TMapFunction<NodeData> = (
 
 /**
  * A doubly linked list
- * ```javascript
+ * ```ts
  * const list = new LinkedList(1, 2, 3);
  * const listFromArray = LinkedList.from([1, 2, 3]);
  * ```
@@ -56,7 +56,9 @@ export default class LinkedList<NodeData = any> {
     this.tail = null;
     this.size = 0;
 
-    for (const data of args) { this.append(data); }
+    for (let i = 0; i < arguments.length; i++) {
+      this.append(arguments[i]);
+    }
   }
 
   /**
@@ -305,10 +307,60 @@ export default class LinkedList<NodeData = any> {
   }
 
   /**
+   * Sorts the linked list using the provided compare function
+   * @param compare A function used to compare the data of two nodes. It should return
+   *                a boolean. True will insert a before b, false will insert b before a.
+   *                (a, b) => a < b or (1, 2) => 1 < 2 === true, 2 will be inserted after 1,
+   *                the sort order will be ascending.
+   */
+  public sort(compare: (a: NodeData, b: NodeData) => boolean): LinkedList<NodeData> {
+    if (this.head === null || this.tail === null) { return this; }
+    if (this.length < 2) { return this; }
+
+    const quicksort = (
+      start: LinkedListNode<NodeData>,
+      end: LinkedListNode<NodeData>,
+    ) => {
+      if (start === end) {
+        return;
+      }
+      const pivotData = end.data;
+      let current: LinkedListNode | null = start;
+      let split: LinkedListNode = start;
+      while (current && current !== end) {
+        const sort = compare(current.data, pivotData);
+        if (sort) {
+          if (current !== split) {
+            const temp = split.data;
+            split.data = current.data;
+            current.data = temp;
+          }
+          split = split.next!;
+        }
+        current = current.next;
+      }
+      end.data = split.data;
+      split.data = pivotData;
+
+      if (start.next === end.prev) { return; }
+
+      if (split.prev && split !== start) {
+        quicksort(start, split.prev);
+      }
+      if (split.next && split !== end) {
+        quicksort(split.next, end);
+      }
+    };
+
+    quicksort(this.head, this.tail);
+    return this;
+  }
+
+  /**
    * Insert a new node after this one
    * ```ts
    * const list = new LinkedList(2, 3);
-   * list.insertBefore(list.head, 1); // 1 <=> 2 <=> 3
+   * list.insertAfter(list.head, 1); // 1 <=> 2 <=> 3
    * ```
    * @param referenceNode The reference node
    * @param data Data to be saved in the node
@@ -348,28 +400,42 @@ export default class LinkedList<NodeData = any> {
   }
 
   /**
-   * Concatenate the current list with another and return this list
+   * Merge the current list with another. Both lists will be
+   * equal after merging.
    * ```ts
    * const list = new LinkedList(1, 2);
    * const otherList = new LinkedList(3);
-   * list.concat(otherList); // 1 <=> 2 <=> 3
+   * list.merge(otherList);
+   * (list === otherList); // true
    * ```
-   * @param list The list to be linked
+   * @param list The list to be merged
    */
-  public concat(list: LinkedList<NodeData>): LinkedList<NodeData> {
-    if (list.head !== null) {
-      const link = new LinkedListNode(
-        list.head.data,
-        this.tail,
-        list.head.next,
-        this,
-      );
-      if (this.tail !== null) { this.tail.next = link; }
+  public merge(list: LinkedList<NodeData>): void {
+    if (this.tail !== null) {
+      this.tail.next = list.head;
     }
-
+    if (list.head !== null) {
+      list.head.prev = this.tail;
+    }
     this.head = this.head || list.head;
     this.tail = list.tail || this.tail;
     this.size += list.size;
+    list.size = this.size;
+    list.head = this.head;
+    list.tail = this.tail;
+  }
+
+  /**
+   * Removes all nodes from a list
+   *
+   * ```ts
+   * list.clear();
+   * ```
+   */
+  public clear() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
     return this;
   }
 

@@ -1,28 +1,22 @@
 import LinkedList from '../src/LinkedList';
+import checkIntegrity from './list-integrity';
 
 describe('LinkedList.pop', () => {
   it('Correctly pops', () => {
     const l = new LinkedList(1, 2, 3);
     const value = l.pop();
     expect(value).toBe(3);
-    expect(l.length).toBe(2);
     expect(l.tail.data).toBe(2);
-  });
-
-  it('Correctly pops an empty list', () => {
-    const l = new LinkedList();
-    const value = l.pop();
-    expect(value).toBe(undefined);
-    expect(l.length).toBe(0);
-    expect(l.head).toBe(null);
-    expect(l.tail).toBe(null);
-  });
-
-  it('Correctly pops the only element from the list', () => {
-    const l = new LinkedList(1);
+    checkIntegrity(l);
+    // Pop 2
     l.pop();
-    expect(l.length).toBe(0);
-    expect(l.head).toBe(null);
-    expect(l.tail).toBe(null);
+    checkIntegrity(l);
+    // Pop 1
+    l.pop();
+    checkIntegrity(l);
+    // Pop empty
+    const empty = l.pop();
+    checkIntegrity(l);
+    expect(empty).toBe(undefined);
   });
 });
