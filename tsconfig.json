@@ -10,7 +10,7 @@
     "moduleResolution": "node",
     "target": "es5",
     "module": "commonjs",
-    "lib": ["es2017"],
+    "lib": ["es2017"]
   },
   "include": [
     "src/**/*"
