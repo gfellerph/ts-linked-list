@@ -1,7 +1,7 @@
 # ts-linked-list
 [![Build Status](https://travis-ci.com/tuelsch/ts-linked-list.svg?branch=master)](https://travis-ci.com/tuelsch/ts-linked-list)
 ![Dev Dependencies](https://david-dm.org/tuelsch/ts-linked-list/dev-status.svg)
-[![Greenkeeper badge](https://badges.greenkeeper.io/tuelsch/ts-linked-list.svg)](https://greenkeeper.io/)
+
 [![Test Coverage](https://api.codeclimate.com/v1/badges/afe5847fc5c53d9112de/test_coverage)](https://codeclimate.com/github/tuelsch/ts-linked-list/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/afe5847fc5c53d9112de/maintainability)](https://codeclimate.com/github/tuelsch/ts-linked-list/maintainability)
 [![Known Vulnerabilities](https://snyk.io/test/github/tuelsch/ts-linked-list/badge.svg?targetFile=package.json)](https://snyk.io/test/github/tuelsch/ts-linked-list?targetFile=package.json)
