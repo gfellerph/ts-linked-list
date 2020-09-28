@@ -28,9 +28,6 @@
     "lint": "tslint --project \".\"",
     "test": "jest --coverage",
     "doc": "typedoc --theme minimal --target es5 --mode file --out ./doc ./src",
-    "preversion": "yarn test",
-    "postversion": "git push --tags && npm publish",
-    "deploy-patch": "yarn version --patch --force -m \"version %s\""
   },
   "devDependencies": {
     "@types/jest": "^26.0.14",
