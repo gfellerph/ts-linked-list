@@ -27,7 +27,7 @@
     "build": "tsc",
     "lint": "tslint --project \".\"",
     "test": "jest --coverage",
-    "doc": "typedoc --theme minimal --target es5 --mode file --out ./doc ./src",
+    "doc": "typedoc --theme minimal --target es5 --mode file --out ./doc ./src"
   },
   "devDependencies": {
     "@types/jest": "^26.0.14",
