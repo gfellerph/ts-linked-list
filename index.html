@@ -84,7 +84,7 @@
 			<pre><code class="language-ts"><span class="hljs-keyword">import</span> LinkedList <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ts-linked-list&#x27;</span>;
 
 <span class="hljs-comment">// Create a list with however many arguments of whatever type you like</span>
-<span class="hljs-keyword">const</span> list = <span class="hljs-keyword">new</span> LinkedList(<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;two&#x27;</span>, { n: <span class="hljs-number">3</span> }, <span class="hljs-function">() =&gt;</span> <span class="hljs-number">4</span>);
+<span class="hljs-keyword">const</span> list = <span class="hljs-keyword">new</span> LinkedList(<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;two&#x27;</span>, { <span class="hljs-attr">n</span>: <span class="hljs-number">3</span> }, <span class="hljs-function">() =&gt;</span> <span class="hljs-number">4</span>);
 
 <span class="hljs-comment">// TYPESCRIPT ONLY: ts-linked-list uses generics to type the list data</span>
 <span class="hljs-keyword">const</span> typedList = <span class="hljs-keyword">new</span> LinkedList&lt;<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
@@ -130,7 +130,7 @@ list.forEach(<span class="hljs-function"><span class="hljs-params">data</span> =
 				<div class="tsd-signature tsd-kind-icon">TMap<wbr>Function&lt;NodeData&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, list<span class="tsd-signature-symbol">: </span><a href="classes/linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/95de9a0/src/LinkedList.ts#L11">LinkedList.ts:11</a></li>
+						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/6ada980/src/LinkedList.ts#L11">LinkedList.ts:11</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -178,7 +178,7 @@ list.forEach(<span class="hljs-function"><span class="hljs-params">data</span> =
 				<div class="tsd-signature tsd-kind-icon">TTest<wbr>Function&lt;NodeData&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NodeData</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, list<span class="tsd-signature-symbol">: </span><a href="classes/linkedlist.html" class="tsd-signature-type">LinkedList</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">NodeData</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/95de9a0/src/LinkedList.ts#L4">LinkedList.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/tuelsch/ts-linked-list/blob/6ada980/src/LinkedList.ts#L4">LinkedList.ts:4</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
