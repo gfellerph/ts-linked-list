@@ -1,14 +1,16 @@
 import LinkedListNode from './LinkedListNode';
 
+export { LinkedListNode };
+
 /** Type used for filter and find methods, returning a boolean */
-type TTestFunction<NodeData> = (
+export type TTestFunction<NodeData> = (
   data: NodeData,
   index: number,
   list: LinkedList<NodeData>,
 ) => boolean;
 
 /** Type used for map and forEach methods, returning anything */
-type TMapFunction<NodeData> = (
+export type TMapFunction<NodeData> = (
   data: any,
   index: number,
   list: LinkedList<NodeData>,
